@@ -1,0 +1,180 @@
+{
+    "phase": "02_preprocessing",
+    "timestamp": "2026-02-26T17:00:10.039741",
+    "description": "Limpieza de integridad, deduplicación y reindexación diaria",
+    "table_reports": {
+        "ventas": {
+            "status": "success",
+            "initial_shape": [
+                3343,
+                6
+            ],
+            "final_shape": [
+                3343,
+                6
+            ],
+            "audit_log": {
+                "initial_rows": 3343,
+                "exact_duplicates_removed": 0,
+                "removed_columns": [],
+                "duplicate_dates_removed": 0,
+                "ajustes_bonificadas_promocion": 254,
+                "gaps_filled": 0,
+                "total_days_final": 3343,
+                "valores_nulos_finales": 0
+            }
+        },
+        "inventario": {
+            "status": "success",
+            "initial_shape": [
+                3343,
+                12
+            ],
+            "final_shape": [
+                3343,
+                12
+            ],
+            "audit_log": {
+                "initial_rows": 3343,
+                "exact_duplicates_removed": 0,
+                "removed_columns": [],
+                "duplicate_dates_removed": 0,
+                "ajustes_ventas_bonificadas_promocion": 232,
+                "correccion_demanda_inconsistente": 232,
+                "gaps_filled": 0,
+                "total_days_final": 3343,
+                "valores_nulos_finales": 0
+            }
+        },
+        "finanzas": {
+            "status": "success",
+            "initial_shape": [
+                3343,
+                5
+            ],
+            "final_shape": [
+                3343,
+                5
+            ],
+            "audit_log": {
+                "initial_rows": 3343,
+                "exact_duplicates_removed": 0,
+                "removed_columns": [],
+                "duplicate_dates_removed": 0,
+                "gaps_filled": 0,
+                "total_days_final": 3343,
+                "valores_nulos_finales": 0
+            }
+        },
+        "marketing": {
+            "status": "success",
+            "initial_shape": [
+                3343,
+                7
+            ],
+            "final_shape": [
+                3343,
+                7
+            ],
+            "audit_log": {
+                "initial_rows": 3343,
+                "exact_duplicates_removed": 0,
+                "removed_columns": [],
+                "duplicate_dates_removed": 0,
+                "gaps_filled": 0,
+                "total_days_final": 3343,
+                "valores_nulos_finales": 0
+            }
+        },
+        "macroeconomia": {
+            "status": "success",
+            "initial_shape": [
+                3343,
+                5
+            ],
+            "final_shape": [
+                3343,
+                5
+            ],
+            "audit_log": {
+                "initial_rows": 3343,
+                "exact_duplicates_removed": 0,
+                "removed_columns": [],
+                "duplicate_dates_removed": 0,
+                "gaps_filled": 0,
+                "total_days_final": 3343,
+                "valores_nulos_finales": 0
+            }
+        },
+        "clima": {
+            "status": "success",
+            "initial_shape": [
+                3343,
+                7
+            ],
+            "final_shape": [
+                3343,
+                7
+            ],
+            "audit_log": {
+                "initial_rows": 3343,
+                "exact_duplicates_removed": 0,
+                "removed_columns": [],
+                "duplicate_dates_removed": 0,
+                "gaps_filled": 0,
+                "total_days_final": 3343,
+                "valores_nulos_finales": 0
+            }
+        }
+    },
+    "master_audit": {
+        "total_rows": 3343,
+        "total_columns": 36,
+        "columns_info": {
+            "unidades_totales": "int64",
+            "unidades_pagas": "int64",
+            "unidades_bonificadas": "int64",
+            "es_promocion": "int64",
+            "ads_activos": "int64",
+            "kit_inicial_bodega": "int64",
+            "kit_recibido": "int64",
+            "lbs_recibidas": "int64",
+            "demanda_teorica_total": "int64",
+            "buñuelos_preparados": "int64",
+            "ventas_reales_totales": "int64",
+            "ventas_reales_pagas": "int64",
+            "ventas_reales_bonificadas": "int64",
+            "buñuelos_desperdiciados": "int64",
+            "unidades_agotadas": "int64",
+            "kit_final_bodega": "int64",
+            "precio_unitario": "int64",
+            "costo_unitario": "float64",
+            "margen_bruto": "float64",
+            "porcentaje_margen": "float64",
+            "inversion_total": "int64",
+            "ig_cost": "int64",
+            "fb_cost": "int64",
+            "ig_pct": "float64",
+            "fb_pct": "float64",
+            "campaña_activa": "int64",
+            "smlv": "int64",
+            "inflacion_mensual_ipc": "float64",
+            "tasa_desempleo": "float64",
+            "trm": "float64",
+            "temperatura_media": "float64",
+            "probabilidad_lluvia": "float64",
+            "precipitacion_mm": "float64",
+            "tipo_lluvia": "object",
+            "evento_macro": "object",
+            "es_dia_lluvioso": "int64"
+        },
+        "null_values_count": 0,
+        "duplicate_rows": 0,
+        "duplicate_columns": 0,
+        "index_name": "fecha",
+        "date_range": {
+            "start": "2017-01-01T00:00:00",
+            "end": "2026-02-25T00:00:00"
+        }
+    }
+}

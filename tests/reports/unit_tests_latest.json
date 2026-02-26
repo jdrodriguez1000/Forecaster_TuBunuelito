@@ -1,43 +1,87 @@
 {
     "phase": "unit_tests",
-    "timestamp": "2026-02-26T14:23:37.906470",
-    "description": "Reporte de ejecución de pruebas unitarias para: loader",
+    "timestamp": "2026-02-26T16:54:49.930935",
+    "description": "Reporte de ejecución de pruebas unitarias para: db_connector, loader, preprocessor",
     "components": [
-        "loader"
+        "db_connector",
+        "loader",
+        "preprocessor"
     ],
     "metrics": {
-        "passed": 5,
+        "passed": 17,
         "failed": 0,
         "skipped": 0,
-        "total": 5
+        "total": 17
     },
     "details": [
+        {
+            "test_name": "test_init_success",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0006,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_missing_credentials",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0009,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_missing_key_only",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0011,
+            "error_message": null
+        },
+        {
+            "test_name": "test_get_client_singleton",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0019,
+            "error_message": null
+        },
+        {
+            "test_name": "test_get_client_critical_failure",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0008,
+            "error_message": null
+        },
+        {
+            "test_name": "test_env_loading_fallback",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0005,
+            "error_message": null
+        },
         {
             "test_name": "test_run_extraction_first_time_success",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0073,
+            "duration": 0.0088,
             "error_message": null
         },
         {
             "test_name": "test_run_extraction_incremental_success",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0067,
+            "duration": 0.0076,
             "error_message": null
         },
         {
             "test_name": "test_fetch_table_pagination",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0077,
+            "duration": 0.0075,
             "error_message": null
         },
         {
             "test_name": "test_get_preview",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0081,
+            "duration": 0.0078,
             "error_message": null
         },
         {
@@ -45,6 +89,48 @@
             "component": "loader",
             "status": "passed",
             "duration": 0.0048,
+            "error_message": null
+        },
+        {
+            "test_name": "test_clean_inventario_demand",
+            "component": "preprocessor",
+            "status": "passed",
+            "duration": 0.0053,
+            "error_message": null
+        },
+        {
+            "test_name": "test_clean_ventas_promotions",
+            "component": "preprocessor",
+            "status": "passed",
+            "duration": 0.0047,
+            "error_message": null
+        },
+        {
+            "test_name": "test_imputation_clima",
+            "component": "preprocessor",
+            "status": "passed",
+            "duration": 0.0054,
+            "error_message": null
+        },
+        {
+            "test_name": "test_imputation_finanzas",
+            "component": "preprocessor",
+            "status": "passed",
+            "duration": 0.0035,
+            "error_message": null
+        },
+        {
+            "test_name": "test_imputation_marketing",
+            "component": "preprocessor",
+            "status": "passed",
+            "duration": 0.0046,
+            "error_message": null
+        },
+        {
+            "test_name": "test_merge_master_integrity",
+            "component": "preprocessor",
+            "status": "passed",
+            "duration": 0.0381,
             "error_message": null
         }
     ]

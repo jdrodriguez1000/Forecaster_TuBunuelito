@@ -1,43 +1,65 @@
 {
     "phase": "integration_tests",
-    "timestamp": "2026-02-26T14:25:57.788623",
+    "timestamp": "2026-02-26T17:00:10.288877",
     "description": "Reporte de ejecución de pruebas de integración",
     "components": [
-        "extraction_flow"
+        "extraction_flow",
+        "preprocessing_flow"
     ],
     "metrics": {
-        "passed": 4,
+        "passed": 7,
         "failed": 0,
         "skipped": 0,
-        "total": 4
+        "total": 7
     },
     "details": [
         {
             "test_name": "test_full_extraction_flow_real",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 2.1221,
+            "duration": 2.1562,
             "error_message": null
         },
         {
             "test_name": "test_audit_report_content",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 0.0298,
+            "duration": 0.0203,
             "error_message": null
         },
         {
             "test_name": "test_incremental_logic_simulation",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 0.025,
+            "duration": 0.0266,
             "error_message": null
         },
         {
             "test_name": "test_connection_failure_handling",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 0.0568,
+            "duration": 0.0658,
+            "error_message": null
+        },
+        {
+            "test_name": "test_full_preprocessing_flow",
+            "component": "preprocessing_flow",
+            "status": "passed",
+            "duration": 0.2166,
+            "error_message": null
+        },
+        {
+            "test_name": "test_preprocessing_report_persistence",
+            "component": "preprocessing_flow",
+            "status": "passed",
+            "duration": 0.0157,
+            "error_message": null
+        },
+        {
+            "test_name": "test_master_data_consistency",
+            "component": "preprocessing_flow",
+            "status": "passed",
+            "duration": 0.0063,
             "error_message": null
         }
     ]

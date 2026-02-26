@@ -7,7 +7,7 @@ general:
   data_processed_path: "data/04_processed"
   outputs_path: "outputs"
   tests_reports_path: "tests/reports"
-  mode: "load" # Opciones: load, train, forecast
+  mode: "train" # Opciones: load, train, forecast
 
 extractions:
   tables: ["ventas", "inventario", "finanzas", "marketing", "macroeconomia", "clima"]

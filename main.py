@@ -2,6 +2,7 @@ import argparse
 import logging
 from src.utils.config_loader import load_config
 from src.loader import DataLoader
+from src.preprocessor import DataPreprocessor
 
 # Configuración de logging para producción
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -37,8 +38,15 @@ def main():
         # Lógica para Fases Futuras
         if mode == "train":
             logger.info("Iniciando Pipeline de Entrenamiento Completo...")
-            # Aquí se llamarán: Preprocessing -> EDA -> Features -> Modeling
-            logger.warning("Fases posteriores a 'load' aún no implementadas.")
+            
+            # FASE 02: Preprocessing
+            logger.info("Fase 02: Iniciando Limpieza de Integridad y Reindexación...")
+            preprocessor = DataPreprocessor()
+            preprocessor.run()
+            logger.info("Fase 02 completada exitosamente.")
+            
+            # Aquí se llamarán: EDA -> Features -> Modeling
+            logger.warning("Fases posteriores a 'Preprocessing' aún no implementadas.")
             
         elif mode == "forecast":
             logger.info("Iniciando Pipeline de Inferencia (Forecast)...")
