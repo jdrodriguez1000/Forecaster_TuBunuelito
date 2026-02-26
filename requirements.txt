@@ -12,3 +12,5 @@ papermill
 pytest
 sqlalchemy
 psycopg2-binary
+supabase
+pyarrow

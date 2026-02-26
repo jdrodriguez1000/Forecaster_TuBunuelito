@@ -76,12 +76,14 @@ Queda estrictamente prohibido mezclar salidas "experimentales" transitorias con 
     *   Figuras oficiales en `outputs/figures/`.
     *   Modelos compilados (.pkl/.joblib) en `outputs/models/`.
     *   Archivos de pronóstico diario (.csv) en `outputs/forecast/`.
+*   **Entorno Calidad (Pruebas Automatizadas):**
+    *   Los reportes JSON de ejecución de pruebas van a `tests/reports/`.
 *   **Aislamiento de Pruebas:** Los entornos de Test no pueden tocar artefactos reales. Todo framework de simulación y test local corre bajo un flag de Mocking o `save=False` aislando los datos.
 
 ## 7. 📤 Protocolo de Entregables y Trazabilidad
-*   **Protocolo de Dual Persistencia (Trazabilidad Total):** Todo artefacto generado en producción (JSON de reportes, figuras PNG/HTML, modelos PKL/JOBLIB y pronósticos CSV) debe seguir obligatoriamente este patrón:
-    *   **Versión Histórica Inmutable:** Se guarda en una subcarpeta llamada `history/` con el formato `nombre_fase_YYYYMMDD_HHMMSS.extension`.
-    *   **Versión Puntero (Latest):** Se guarda en la raíz de su carpeta correspondiente (`reports/`, `figures/`, `models/`, `forecast/`) como `nombre_fase_latest.extension`, siendo sobrescrita en cada ejecución exitosa para facilitar el consumo técnico.
-    *   **Contenido de Reportes:** Los archivos JSON deben incluir siempre los campos `phase`, `timestamp`, `description` y las `metrics` de auditoría correspondientes.
+*   **Protocolo de Dual Persistencia (Trazabilidad Total):** Todo artefacto generado en producción o calidad (JSON de reportes, figuras PNG/HTML, modelos PKL/JOBLIB, pronósticos CSV y **reportes de pruebas**) debe seguir obligatoriamente este patrón:
+    *   **Versión Histórica Inmutable:** Se guarda en una subcarpeta llamada `history/` con el formato `nombre_YYYYMMDD_HHMMSS.extension`.
+    *   **Versión Puntero (Latest):** Se guarda en la raíz de su carpeta correspondiente (`reports/`, `figures/`, `models/`, `forecast/`, `tests/reports/`) como `nombre_latest.extension`.
+    *   **Contenido de Reportes:** Los archivos JSON deben incluir siempre los campos `phase`, `timestamp`, `description` y las `metrics` de auditoría correspondientes (o resultados de pruebas).
 *   **Gestión de Entornos:** Prohibida la instalación desorganizada de paquetes. Todo control reside en usar un solo `.venv` referenciado por `requirements.txt`.
 *   **Gatekeeper:** El avance hacia una nueva fase queda denegado hasta que el usuario humano audite, lea los reportes JSON e introduzca su aprobación explícitamente en el chat.

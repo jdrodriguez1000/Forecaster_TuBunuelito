@@ -6,15 +6,64 @@ general:
   data_features_path: "data/03_features"
   data_processed_path: "data/04_processed"
   outputs_path: "outputs"
+  tests_reports_path: "tests/reports"
+  mode: "load" # Opciones: load, train, forecast
 
 extractions:
-  tables:
-    - ventas
-    - inventario
-    - finanzas
-    - marketing
-    - macroeconomia
-    - clima
+  tables: ["ventas", "inventario", "finanzas", "marketing", "macroeconomia", "clima"]
+  schemas:
+    ventas:
+      fecha: datetime
+      unidades_totales: int
+      unidades_pagas: int
+      unidades_bonificadas: int
+      es_promocion: int
+      ads_activos: int
+    inventario:
+      fecha: datetime
+      kit_inicial_bodega: int
+      kit_recibido: int
+      lbs_recibidas: int
+      demanda_teorica_total: int
+      buñuelos_preparados: int
+      ventas_reales_totales: int
+      ventas_reales_pagas: int
+      ventas_reales_bonificadas: int
+      buñuelos_desperdiciados: int
+      unidades_agotadas: int
+      kit_final_bodega: int
+    finanzas:
+      fecha: datetime
+      precio_unitario: int
+      costo_unitario: float
+      margen_bruto: float
+      porcentaje_margen: float
+    marketing:
+      fecha: datetime
+      inversion_total: int
+      ig_cost: int
+      fb_cost: int
+      ig_pct: float
+      fb_pct: float
+      campaña_activa: int
+    macroeconomia:
+      fecha: datetime
+      smlv: int
+      inflacion_mensual_ipc: float
+      tasa_desempleo: float
+      trm: float
+    clima:
+      fecha: datetime
+      temperatura_media: float
+      probabilidad_lluvia: float
+      precipitacion_mm: float
+      tipo_lluvia: object
+      evento_macro: object
+      es_dia_lluvioso: int
+  sentinel_values:
+    numeric: [-999, 9999, -1]
+    object: ["N/A", "NULL", "NONE", "UNKNOWN", "MISSING", "SIN_DATO", "", " "]
+    datetime: ["1900-01-01", "1700-01-01", "9999-12-31", "2099-12-31"]
 
 preprocessing:
   target_column: y

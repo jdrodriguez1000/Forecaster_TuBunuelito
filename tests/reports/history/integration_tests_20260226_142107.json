@@ -1,0 +1,23 @@
+{
+    "phase": "integration_tests",
+    "timestamp": "2026-02-26T14:21:07.803922",
+    "description": "Reporte de ejecución de pruebas de integración",
+    "components": [
+        "extraction_flow"
+    ],
+    "metrics": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "total": 1
+    },
+    "details": [
+        {
+            "test_name": "test_incremental_logic_simulation",
+            "component": "extraction_flow",
+            "status": "failed",
+            "duration": 0.0616,
+            "error_message": "self = <test_extraction_flow.TestExtractionIntegration object at 0x00000272EF318AD0>\ntmp_path = WindowsPath('C:/Users/USUARIO/AppData/Local/Temp/pytest-of-USUARIO/pytest-346/test_incremental_logic_simulat0')\n\n    def test_incremental_logic_simulation(self, tmp_path):\n        \"\"\"\n        [NEGATIVO/LÓGICA] Verifica que la lógica incremental detecte correctamente\n        el last_date incluso si forzamos un escenario controlado.\n        \"\"\"\n        # Usamos una carpeta temporal para no afectar los datos reales de data/01_raw\n        temp_raw = tmp_path / \"raw\"\n        temp_raw.mkdir()\n    \n        # Crear un archivo parquet 'dummy' con fechas viejas\n        table_name = \"ventas\"\n        dummy_file = temp_raw / f\"{table_name}.parquet\"\n        old_data = pd.DataFrame({\n            \"fecha\": pd.to_datetime([\"2020-01-01\", \"2020-01-02\"]),\n            \"unidades_totales\": [100, 110]\n        })\n        old_data.to_parquet(dummy_file)\n    \n        # Instanciar loader y parchear la ruta de data_raw\n        with patch.object(self.loader, \"raw_path\", str(temp_raw)):\n            # Simular fetch_table para que devuelva solo 1 fila nueva\n            new_row = pd.DataFrame({\n                \"fecha\": pd.to_datetime([\"2020-01-03\"]),\n                \"unidades_totales\": [120]\n            })\n    \n            with patch.object(self.loader, \"_fetch_table\", return_value=new_row) as mock_fetch:\n                self.loader.run_extraction()\n    \n                # Verificar que fetch_table fue llamado con la fecha máxima (2020-01-02)\n                called_date = mock_fetch.call_args[1][\"last_date\"]\n>               assert called_date == pd.Timestamp(\"2020-01-02\")\nE               AssertionError: assert None == Timestamp('2020-01-02 00:00:00')\nE                +  where Timestamp('2020-01-02 00:00:00') = <class 'pandas._libs.tslibs.timestamps.Timestamp'>('2020-01-02')\nE                +    where <class 'pandas._libs.tslibs.timestamps.Timestamp'> = pd.Timestamp\n\ntests\\integration\\test_extraction_flow.py:102: AssertionError"
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "phase": "unit_tests",
+    "timestamp": "2026-02-26T11:29:34.535102",
+    "description": "Reporte de ejecuci\u00f3n de pruebas unitarias para: db_connector",
+    "components": [
+        "db_connector"
+    ],
+    "metrics": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "total": 6
+    },
+    "details": [
+        {
+            "test_name": "test_init_success",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0006,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_missing_credentials",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.001,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_missing_key_only",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0009,
+            "error_message": null
+        },
+        {
+            "test_name": "test_get_client_singleton",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0008,
+            "error_message": null
+        },
+        {
+            "test_name": "test_get_client_critical_failure",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0006,
+            "error_message": null
+        },
+        {
+            "test_name": "test_env_loading_fallback",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0004,
+            "error_message": null
+        }
+    ]
+}

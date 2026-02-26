@@ -1,0 +1,94 @@
+{
+    "phase": "unit_tests",
+    "timestamp": "2026-02-26T12:44:49.078243",
+    "description": "Reporte de ejecuci\u00f3n de pruebas unitarias para: db_connector, loader",
+    "components": [
+        "db_connector",
+        "loader"
+    ],
+    "metrics": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "total": 11
+    },
+    "details": [
+        {
+            "test_name": "test_init_success",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0007,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_missing_credentials",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0009,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_missing_key_only",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0009,
+            "error_message": null
+        },
+        {
+            "test_name": "test_get_client_singleton",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0186,
+            "error_message": null
+        },
+        {
+            "test_name": "test_get_client_critical_failure",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0007,
+            "error_message": null
+        },
+        {
+            "test_name": "test_env_loading_fallback",
+            "component": "db_connector",
+            "status": "passed",
+            "duration": 0.0004,
+            "error_message": null
+        },
+        {
+            "test_name": "test_run_extraction_success",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0023,
+            "error_message": null
+        },
+        {
+            "test_name": "test_run_extraction_partial_failure",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0018,
+            "error_message": null
+        },
+        {
+            "test_name": "test_fetch_table_empty",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0076,
+            "error_message": null
+        },
+        {
+            "test_name": "test_fetch_table_with_data",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0056,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_path_creation",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0057,
+            "error_message": null
+        }
+    ]
+}

@@ -45,11 +45,13 @@ Diseño orientado a objetos y modularidad:
 Protocolos de validación obligatorios usando `pytest`:
 *   **Tests Unitarios**: En `tests/unit/` para lógica atómica y contratos de módulos.
 *   **Tests de Integración**: En `tests/integration/` para flujos E2E y persistencia de datos.
+*   **Trazabilidad de Pruebas**: Todo resultado de ejecución de pruebas debe generar un reporte JSON en `tests/reports/` siguiendo el **Protocolo de Dual Persistencia**.
 
 ## 📊 5. Segregación de Salidas y Protocolo de Trazabilidad
 
-### 🏭 Producción (`outputs/`)
+### 🏭 Producción (`outputs/`) y Calidad (`tests/reports/`)
 Toda salida oficial debe seguir el **Protocolo de Dual Persistencia**:
+*   **`tests/reports/`**: Logs y resultados de ejecución de pruebas unitarias e integración.
 *   **`outputs/reports/`**: Reportes JSON. Versión `latest.json` en raíz y versiones con timestamp en `history/`.
 *   **`outputs/figures/`**: Visualizaciones y artefactos gráficos oficiales (PNG/HTML).
 *   **`outputs/models/`**: Binarios de modelos (`.pkl`, `.joblib`).

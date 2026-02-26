@@ -1,0 +1,51 @@
+{
+    "phase": "unit_tests",
+    "timestamp": "2026-02-26T14:13:20.592192",
+    "description": "Reporte de ejecución de pruebas unitarias para: loader",
+    "components": [
+        "loader"
+    ],
+    "metrics": {
+        "passed": 4,
+        "failed": 1,
+        "skipped": 0,
+        "total": 5
+    },
+    "details": [
+        {
+            "test_name": "test_run_extraction_first_time_success",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0091,
+            "error_message": null
+        },
+        {
+            "test_name": "test_run_extraction_incremental_success",
+            "component": "loader",
+            "status": "failed",
+            "duration": 0.0004,
+            "error_message": "args = (<test_loader.TestDataLoader object at 0x000002C6AA8098B0>,)\nkeywargs = {'mock_config': {'extractions': {'schemas': {'clima': {'fecha': 'datetime', 'temp': 'float'}, 'ventas': {'fecha': 'dat...ima']}, 'general': {'data_raw_path': 'data/01_raw', 'outputs_path': 'outputs', 'tests_reports_path': 'tests/reports'}}}\n\n    @wraps(func)\n    def patched(*args, **keywargs):\n>       with self.decoration_helper(patched,\n                                    args,\n                                    keywargs) as (newargs, newkeywargs):\n\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\unittest\\mock.py:1393: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py:137: in __enter__\n    return next(self.gen)\n           ^^^^^^^^^^^^^^\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\unittest\\mock.py:1375: in decoration_helper\n    arg = exit_stack.enter_context(patching)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\contextlib.py:526: in enter_context\n    result = _enter(cm)\n             ^^^^^^^^^^\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\unittest\\mock.py:1451: in __enter__\n    self.target = self.getter()\n                  ^^^^^^^^^^^^^\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\pkgutil.py:513: in resolve_name\n    mod = importlib.import_module(modname)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nname = 'pd', package = None\n\n    def import_module(name, package=None):\n        \"\"\"Import a module.\n    \n        The 'package' argument is required when performing a relative import. It\n        specifies the package to use as the anchor point from which to resolve the\n        relative import to an absolute import.\n    \n        \"\"\"\n        level = 0\n        if name.startswith('.'):\n            if not package:\n                raise TypeError(\"the 'package' argument is required to perform a \"\n                                f\"relative import for {name!r}\")\n            for character in name:\n                if character != '.':\n                    break\n                level += 1\n>       return _bootstrap._gcd_import(name[level:], package, level)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       ModuleNotFoundError: No module named 'pd'\n\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\importlib\\__init__.py:90: ModuleNotFoundError"
+        },
+        {
+            "test_name": "test_fetch_table_pagination",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.017,
+            "error_message": null
+        },
+        {
+            "test_name": "test_get_preview",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0069,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_path_creation",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0048,
+            "error_message": null
+        }
+    ]
+}

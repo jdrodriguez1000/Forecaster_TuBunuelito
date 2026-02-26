@@ -1,0 +1,19 @@
+{
+    "phase": "01_extractions",
+    "timestamp": "2026-02-26T14:25:57.735021",
+    "description": "Reporte consolidado de extracción incremental y auditoría de datos",
+    "metrics": {
+        "total_tables_processed": 1,
+        "successful_extractions": 0,
+        "failed_extractions": 1,
+        "total_rows_extracted": 0,
+        "incremental_updates": 1,
+        "full_extractions": 0
+    },
+    "table_audits": {
+        "ventas": {
+            "status": "error",
+            "error_message": "Conexión rechazada"
+        }
+    }
+}

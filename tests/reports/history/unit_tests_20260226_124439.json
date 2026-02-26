@@ -1,0 +1,51 @@
+{
+    "phase": "unit_tests",
+    "timestamp": "2026-02-26T12:44:39.676232",
+    "description": "Reporte de ejecuci\u00f3n de pruebas unitarias para: loader",
+    "components": [
+        "loader"
+    ],
+    "metrics": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "total": 5
+    },
+    "details": [
+        {
+            "test_name": "test_run_extraction_success",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0029,
+            "error_message": null
+        },
+        {
+            "test_name": "test_run_extraction_partial_failure",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0016,
+            "error_message": null
+        },
+        {
+            "test_name": "test_fetch_table_empty",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.007,
+            "error_message": null
+        },
+        {
+            "test_name": "test_fetch_table_with_data",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0063,
+            "error_message": null
+        },
+        {
+            "test_name": "test_init_path_creation",
+            "component": "loader",
+            "status": "passed",
+            "duration": 0.0045,
+            "error_message": null
+        }
+    ]
+}

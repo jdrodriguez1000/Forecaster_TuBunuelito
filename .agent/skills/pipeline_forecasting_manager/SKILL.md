@@ -94,9 +94,15 @@ En cada fase técnica, el agente debe seguir obligatoriamente este flujo secuenc
 *   **Resultados**: Dashboard o reporte periódico de salud del modelo en `outputs/monitoring/`.
 
 ## 📊 Protocolo de Trazabilidad
-Cada fase debe generar un artefacto (ej. JSON) bajo el **Patrón de Persistencia Dual** (Versión `latest` en raíz y versiones históricas en subcarpeta `history/`) incluyendo:
-*   `phase`: Nombre de la fase.
+Cada fase técnica y ejecución de pruebas debe generar un artefacto (ej. JSON) bajo el **Patrón de Persistencia Dual** (Versión `latest` en raíz y versiones históricas en subcarpeta `history/`) asegurando la auditoría completa del pipeline:
+
+*   **Reportes de Negocio (`outputs/reports/`)**: Contienen métricas de fase, KPIs y estados de orquestación.
+*   **Reportes de Calidad (`tests/reports/`)**: Contienen el resultado de la ejecución de pruebas unitarias e integración.
+
+Los archivos JSON deben incluir:
+*   `phase`: Nombre de la fase o tipo de prueba (`unit_tests`, `integration_tests`).
 *   `timestamp`: Fecha y hora de ejecución.
-*   `metrics`: Resultados clave o KPIs de la fase.
+*   `metrics`: Resultados clave o KPIs de la fase (o conteo de casos passed/failed).
 *   `description`: Resumen técnico de la ejecución.
+*   `details`: Detalle granular de resultados (opcional para logs de pruebas).
 *   `status`: Resultado de las validaciones y pruebas relacionadas.

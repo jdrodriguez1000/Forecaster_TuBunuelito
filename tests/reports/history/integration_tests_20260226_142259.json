@@ -1,0 +1,44 @@
+{
+    "phase": "integration_tests",
+    "timestamp": "2026-02-26T14:22:59.874890",
+    "description": "Reporte de ejecución de pruebas de integración",
+    "components": [
+        "extraction_flow"
+    ],
+    "metrics": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "total": 4
+    },
+    "details": [
+        {
+            "test_name": "test_full_extraction_flow_real",
+            "component": "extraction_flow",
+            "status": "passed",
+            "duration": 1.9812,
+            "error_message": null
+        },
+        {
+            "test_name": "test_audit_report_content",
+            "component": "extraction_flow",
+            "status": "passed",
+            "duration": 0.0204,
+            "error_message": null
+        },
+        {
+            "test_name": "test_incremental_logic_simulation",
+            "component": "extraction_flow",
+            "status": "passed",
+            "duration": 0.0397,
+            "error_message": null
+        },
+        {
+            "test_name": "test_connection_failure_handling",
+            "component": "extraction_flow",
+            "status": "passed",
+            "duration": 0.0155,
+            "error_message": null
+        }
+    ]
+}
