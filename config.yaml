@@ -1,0 +1,62 @@
+general:
+  random_state: 42
+  base_path: "."
+  data_raw_path: "data/01_raw"
+  data_cleansed_path: "data/02_cleansed"
+  data_features_path: "data/03_features"
+  data_processed_path: "data/04_processed"
+  outputs_path: "outputs"
+
+extractions:
+  tables:
+    - ventas
+    - inventario
+    - finanzas
+    - marketing
+    - macroeconomia
+    - clima
+
+preprocessing:
+  target_column: y
+  date_column: date
+  imputation_strategy: ffill
+
+eda:
+  visualizations:
+    - time_series_plot
+    - correlation_matrix
+    - seasonality_analysis
+
+features:
+  lags: [1, 7, 14, 30]
+  window_features: [7, 14, 30]
+  exogenous_vars:
+    - is_holiday
+    - is_promotion
+    - rain_intensity
+
+modeling:
+  strategy: ForecasterDirect
+  horizon: 185
+  models:
+    - Ridge
+    - RandomForestRegressor
+    - LGBMRegressor
+    - XGBRegressor
+  metrics:
+    - mape
+    - rmse
+
+forecast:
+  horizon: 185
+  confidence_interval: 0.95
+
+simulations:
+  scenarios:
+    - baseline
+    - optimistic
+    - pessimistic
+
+monitoring:
+  drift_threshold: 0.05
+  retrain_period: 30
