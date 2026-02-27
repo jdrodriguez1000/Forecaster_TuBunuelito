@@ -1,88 +1,89 @@
 {
     "phase": "unit_tests",
-    "timestamp": "2026-02-27T11:48:29.494090",
-    "description": "Reporte de ejecución de pruebas unitarias para: analyzer, db_connector, loader, preprocessor",
+    "timestamp": "2026-02-27T15:38:38.555098",
+    "description": "Reporte de ejecución de pruebas unitarias para: analyzer, db_connector, features, loader, preprocessor",
     "components": [
         "analyzer",
         "db_connector",
+        "features",
         "loader",
         "preprocessor"
     ],
     "metrics": {
-        "passed": 33,
+        "passed": 38,
         "failed": 0,
         "skipped": 0,
-        "total": 33
+        "total": 38
     },
     "details": [
         {
             "test_name": "test_all_nans_series",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.3161,
+            "duration": 0.1763,
             "error_message": null
         },
         {
             "test_name": "test_analyze_anomalies_detection",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.3561,
+            "duration": 0.143,
             "error_message": null
         },
         {
             "test_name": "test_analyze_stationarity_detection",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.0395,
+            "duration": 0.0257,
             "error_message": null
         },
         {
             "test_name": "test_constant_data_variance",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.2422,
+            "duration": 0.1755,
             "error_message": null
         },
         {
             "test_name": "test_empty_dataframe_error",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.0254,
+            "duration": 0.02,
             "error_message": null
         },
         {
             "test_name": "test_excessive_split_config",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.0285,
+            "duration": 0.0203,
             "error_message": null
         },
         {
             "test_name": "test_full_run_positive",
             "component": "analyzer",
             "status": "passed",
-            "duration": 2.9325,
+            "duration": 1.6234,
             "error_message": null
         },
         {
             "test_name": "test_insufficient_data_for_decomposition",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.0244,
+            "duration": 0.0216,
             "error_message": null
         },
         {
             "test_name": "test_missing_target_column",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.0286,
+            "duration": 0.0215,
             "error_message": null
         },
         {
             "test_name": "test_split_data_correctness",
             "component": "analyzer",
             "status": "passed",
-            "duration": 0.0269,
+            "duration": 0.0211,
             "error_message": null
         },
         {
@@ -96,154 +97,189 @@
             "test_name": "test_init_missing_credentials",
             "component": "db_connector",
             "status": "passed",
-            "duration": 0.0016,
+            "duration": 0.001,
             "error_message": null
         },
         {
             "test_name": "test_init_missing_key_only",
             "component": "db_connector",
             "status": "passed",
-            "duration": 0.0029,
+            "duration": 0.001,
             "error_message": null
         },
         {
             "test_name": "test_get_client_singleton",
             "component": "db_connector",
             "status": "passed",
-            "duration": 0.0014,
+            "duration": 0.0008,
             "error_message": null
         },
         {
             "test_name": "test_get_client_critical_failure",
             "component": "db_connector",
             "status": "passed",
-            "duration": 0.0009,
+            "duration": 0.0005,
             "error_message": null
         },
         {
             "test_name": "test_env_loading_fallback",
             "component": "db_connector",
             "status": "passed",
-            "duration": 0.0008,
+            "duration": 0.0005,
+            "error_message": null
+        },
+        {
+            "test_name": "test_calendar_features",
+            "component": "features",
+            "status": "passed",
+            "duration": 0.0045,
+            "error_message": null
+        },
+        {
+            "test_name": "test_exogenous_transformations",
+            "component": "features",
+            "status": "passed",
+            "duration": 0.0019,
+            "error_message": null
+        },
+        {
+            "test_name": "test_interactions",
+            "component": "features",
+            "status": "passed",
+            "duration": 0.0007,
+            "error_message": null
+        },
+        {
+            "test_name": "test_run_pipeline_integration",
+            "component": "features",
+            "status": "passed",
+            "duration": 0.1147,
+            "error_message": null
+        },
+        {
+            "test_name": "test_simulation_ratios",
+            "component": "features",
+            "status": "passed",
+            "duration": 0.0021,
             "error_message": null
         },
         {
             "test_name": "test_run_extraction_first_time_success",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0085,
+            "duration": 0.0065,
             "error_message": null
         },
         {
             "test_name": "test_run_extraction_incremental_success",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0118,
+            "duration": 0.0071,
             "error_message": null
         },
         {
             "test_name": "test_fetch_table_pagination",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0132,
+            "duration": 0.0094,
             "error_message": null
         },
         {
             "test_name": "test_get_preview",
             "component": "loader",
             "status": "passed",
-            "duration": 0.012,
+            "duration": 0.011,
             "error_message": null
         },
         {
             "test_name": "test_init_path_creation",
             "component": "loader",
             "status": "passed",
-            "duration": 0.0085,
+            "duration": 0.0068,
             "error_message": null
         },
         {
             "test_name": "test_clean_inventario_demand",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0072,
+            "duration": 0.0048,
             "error_message": null
         },
         {
             "test_name": "test_clean_table_missing_columns",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0029,
+            "duration": 0.0022,
             "error_message": null
         },
         {
             "test_name": "test_clean_table_unknown_name",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0006,
+            "duration": 0.0005,
             "error_message": null
         },
         {
             "test_name": "test_clean_ventas_promotions",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0047,
+            "duration": 0.0042,
             "error_message": null
         },
         {
             "test_name": "test_empty_input",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0007,
+            "duration": 0.0006,
             "error_message": null
         },
         {
             "test_name": "test_imputation_clima",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0061,
+            "duration": 0.0039,
             "error_message": null
         },
         {
             "test_name": "test_imputation_finanzas",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0049,
+            "duration": 0.0034,
             "error_message": null
         },
         {
             "test_name": "test_imputation_marketing",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0079,
+            "duration": 0.0044,
             "error_message": null
         },
         {
             "test_name": "test_invalid_date_format_in_input",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0029,
+            "duration": 0.0016,
             "error_message": null
         },
         {
             "test_name": "test_merge_master_integrity",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0245,
+            "duration": 0.0148,
             "error_message": null
         },
         {
             "test_name": "test_merge_master_missing_files",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.0007,
+            "duration": 0.0005,
             "error_message": null
         },
         {
             "test_name": "test_sentinel_values_conversion",
             "component": "preprocessor",
             "status": "passed",
-            "duration": 0.003,
+            "duration": 0.0023,
             "error_message": null
         }
     ]

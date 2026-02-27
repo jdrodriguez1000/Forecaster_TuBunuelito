@@ -1,0 +1,32 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\USUARIO\Documents\Forecaster\Tu_Bunuelito
+configfile: pytest.ini
+plugins: anyio-4.12.0
+collected 1 item
+
+tests\integration\test_features_flow.py F                                [100%]Report saved to tests/reports\integration_tests_latest.json and tests/reports\history\integration_tests_20260227_153958.json
+
+
+================================== FAILURES ===================================
+_______________ TestFeaturesIntegration.test_full_features_flow _______________
+
+self = <test_features_flow.TestFeaturesIntegration testMethod=test_full_features_flow>
+
+    def test_full_features_flow(self):
+        """Prueba de integraci¾n: del cleansed al processed con reporte y figuras."""
+        fe = FeatureEngineer(config_path=self.config_path)
+        # Patch outputs path manually as constructor might use defaults if not careful
+        fe.outputs_path = os.path.join(self.data_dir, "04_processed")
+    
+        df_result = fe.run_pipeline(self.mock_data)
+    
+        # 1. Verificar persistencia del dataset
+        latest_parquet = os.path.join(self.data_dir, "04_processed/dataset_features_latest.parquet")
+>       self.assertTrue(os.path.exists(latest_parquet))
+E       AssertionError: False is not true
+
+tests\integration\test_features_flow.py:88: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/integration/test_features_flow.py::TestFeaturesIntegration::test_full_features_flow
+============================== 1 failed in 1.78s ==============================

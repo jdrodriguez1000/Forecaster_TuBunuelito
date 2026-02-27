@@ -115,14 +115,79 @@ eda:
         december: [15, 20]
 
 features:
-  lags: [1, 7, 14, 30]
-  window_features: [7, 14, 30]
-  exogenous_vars:
-    - "es_dia_lluvioso"
+  # 🎯 Configuración General de la Fase
+  target_variable: "demanda_teorica_total"
+  id_columns: ["fecha"]
+  
+  # 🗑️ Auditoría de Columnas (Diccionario de Eliminación)
+  # Se eliminan por redundancia, multicolinealidad (VIF) o riesgo de leakage.
+  drop_columns:
+    - "unidades_totales"
+    - "unidades_pagas"
+    - "unidades_bonificadas"
+    - "kit_inicial_bodega"
+    - "kit_recibido"
+    - "lbs_recibidas"
+    - "buñuelos_preparados" # Peligro de Leakage (Decisión humana)
+    - "ventas_reales_totales"
+    - "ventas_reales_pagas"
+    - "ventas_reales_bonificadas"
+    - "buñuelos_desperdiciados"
+    - "unidades_agotadas"
+    - "kit_final_bodega"
+    - "precio_unitario" # Consolidado en ratio de asequibilidad
+    - "costo_unitario" # Consolidado en ratio de vulnerabilidad
+    - "margen_bruto"
+    - "ig_cost"
+    - "fb_cost"
+    - "ig_pct"
+    - "fb_pct"
+    - "probabilidad_lluvia"
+    - "precipitacion_mm"
+    - "ads_activos"      # Redundante con Campaña Activa/Inversión
+    - "smlv"            # Consolidado en Ratios de Asequibilidad/Crecimiento
+    - "trm"             # Consolidado en Vulnerabilidad TRM
+    - "es_dia_lluvioso" # Redundante con Heavy/Light Rain
+    - "campaña_activa"  # Correlación 0.99 con Inversión Total
+    - "inflacion_mensual_ipc" # Variable padre (VIF Infinity)
+    - "precio_var_pct" # Componente de ratio (VIF Infinity)
+    - "smlv_var_pct"   # Componente de ratio (VIF Infinity)
+    - "inversion_total" # Sacrificada por Intensidad de Pauta (opcional si hay lag)
+
+  # ✅ Variables Base Proyectables
+  base_columns:
     - "es_promocion"
-    - "campaña_activa"
-    - "smlv"
-    - "trm"
+    - "tasa_desempleo"
+    - "porcentaje_margen"
+    - "evento_macro"
+    - "tipo_lluvia"
+    - "temperatura_media"
+    - "inversion_total" # Mantenemos Inversión como driver continuo principal
+
+  # ✨ Transformaciones y Nuevas Señales (T-1 strict)
+  transformations:
+    exogenous_lags:
+      trm: 30 # El impacto del dólar se percibe 30 días después (CCF Analysis)
+    clima:
+      persistence_window: 3 # Días seguidos de lluvia (Efecto 'La Niña')
+      heavy_rain_threshold: "fuerte"
+    momentum:
+      ipc_lookback_days: 90 # Trimestre para calcular aceleración de precios
+    # Se elimina Fourier por redundancia con Flags de calendario y VIF infinito
+
+  # 🚀 Ingeniería para Simulaciones (Ratios Estratégicos)
+  simulation_ratios:
+    asequibilidad:
+      formula: "precio_unitario / (smlv / 30)"
+    # Se eliminan ratios dependientes del target (se delegan a skforecast)
+    vulnerability_trm:
+      formula: "costo_unitario / trm_lag_30"
+
+  # ⛓️ Interacciones de Negocio (Drivers de Potencia)
+  interactions:
+    - ["es_promocion", "is_sunday"]
+    - ["es_quincena", "is_heavy_rain"]
+    # Se elimina interacción con inflacion por VIF Infinity de la variable padre
 
 modeling:
   strategy: "ForecasterDirect"

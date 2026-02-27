@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
@@ -110,6 +112,10 @@ class DataAnalyzer:
         """Matriz de Correlación y VIF."""
         vif_cols = self.config.get("eda", {}).get("statistics", {}).get("vif_columns", [])
         available_cols = [c for c in vif_cols if c in df.columns]
+        
+        # Filtrar columnas con varianza para evitar matrices singulares en VIF
+        valid_vif_cols = [c for c in available_cols if df[c].nunique() > 1]
+        
         corr_matrix = df[available_cols + [self.target]].corr()
         
         fig, ax = plt.subplots(figsize=(12, 10))
@@ -117,7 +123,7 @@ class DataAnalyzer:
         self._save_figure(fig, "correlation_matrix")
         
         vif_data = pd.DataFrame()
-        X = df[available_cols].dropna()
+        X = df[valid_vif_cols].dropna()
         if not X.empty:
             X_const = add_constant(X)
             vif_data["feature"] = X_const.columns

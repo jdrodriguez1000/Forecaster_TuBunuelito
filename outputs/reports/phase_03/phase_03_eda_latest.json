@@ -1,6 +1,6 @@
 {
     "phase": "03_eda",
-    "timestamp": "2026-02-27T11:49:24.892093",
+    "timestamp": "2026-02-27T15:40:46.491845",
     "description": "Reporte EDA Integral: Hipótesis, Interacciones, Anomalías, Estabilidad, Frecuencias y Lead/Lag.",
     "data_splits": {
         "train": 2974,
