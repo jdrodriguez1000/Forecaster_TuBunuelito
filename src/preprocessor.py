@@ -23,6 +23,7 @@ class DataPreprocessor:
         self.reports_path = os.path.join(self.config['general']['outputs_path'], "reports/phase_02")
         self.schemas = self.config['extractions']['schemas']
         self.sentinels = self.config['extractions']['sentinel_values']
+        self.logger = logger
         
         # Asegurar directorio de salida
         os.makedirs(self.cleansed_path, exist_ok=True)
@@ -136,44 +137,53 @@ class DataPreprocessor:
         """
         Aplica los 6 puntos de limpieza definidos por el usuario.
         """
-        audit_log = {}
-        schema = self.schemas.get(table_name, {})
+        schema = self.schemas.get(table_name)
+        if schema is None:
+            self.logger.warning(f"Table {table_name} not found in schemas config. Skipping cleaning.")
+            return df, {"initial_rows": len(df), "status": "success", "warning": "Table not in config"}
+            
+        audit_log = {"status": "success"}
         valid_cols = list(schema.keys())
         
-        # PANTALLAZO INICIAL
-        audit_log["initial_rows"] = len(df)
+        try:
+            # PANTALLAZO INICIAL
+            audit_log["initial_rows"] = len(df)
 
-        # 1. Manejo de Centinelas (Punto 6)
-        all_sentinels = []
-        for v in self.sentinels.values():
-            all_sentinels.extend(v)
-        
-        # Reemplazar valores exactos
-        df = df.replace(all_sentinels, np.nan)
-        
-        # 2. Eliminación de filas repetidas (deja el último registro) (Punto 2)
-        rows_before = len(df)
-        df = df.drop_duplicates(keep='last')
-        audit_log["exact_duplicates_removed"] = rows_before - len(df)
-
-        # 3. Eliminación de columnas fuera de contrato (Punto 3)
-        cols_before = set(df.columns)
-        actual_valid_cols = [c for c in valid_cols if c in df.columns]
-        df = df[actual_valid_cols]
-        audit_log["removed_columns"] = list(cols_before - set(actual_valid_cols))
-
-        # 4. Manejo de fechas duplicadas (deja el último registro oficial) (Punto 4)
-        if 'fecha' in df.columns:
-            df['fecha'] = pd.to_datetime(df['fecha'])
-            df = df.sort_values('fecha')
+            # 1. Manejo de Centinelas (Punto 6)
+            all_sentinels = []
+            for v in self.sentinels.values():
+                all_sentinels.extend([str(val) for val in v])
+                all_sentinels.extend([val for val in v if isinstance(val, (int, float))])
+            
+            # Reemplazar valores exactos
+            df = df.replace(all_sentinels, np.nan)
+            
+            # 2. Eliminación de filas repetidas (deja el último registro) (Punto 2)
             rows_before = len(df)
-            df = df.groupby('fecha').tail(1)
-            audit_log["duplicate_dates_removed"] = rows_before - len(df)
+            df = df.drop_duplicates(keep='last')
+            audit_log["exact_duplicates_removed"] = rows_before - len(df)
+
+            # 3. Eliminación de columnas fuera de contrato (Punto 3)
+            cols_before = set(df.columns)
+            actual_valid_cols = [c for c in valid_cols if c in df.columns]
+            df = df[actual_valid_cols]
+            audit_log["removed_columns"] = list(cols_before - set(actual_valid_cols))
+
+            # 4. Manejo de fechas duplicadas (deja el último registro oficial) (Punto 4)
+            if 'fecha' in df.columns:
+                df['fecha'] = pd.to_datetime(df['fecha'])
+                df = df.sort_values('fecha')
+                rows_before = len(df)
+                df = df.groupby('fecha').tail(1)
+                audit_log["duplicate_dates_removed"] = rows_before - len(df)
 
             # --- AJUSTES DE REGLAS DE NEGOCIO (Puntos 7 al 11) ---
-            if table_name == "ventas":
-                # Punto 7 y 8: Unidades en Promoción (2x1)
-                if all(c in df.columns for c in ["es_promocion", "unidades_pagas", "unidades_bonificadas"]):
+                if table_name == "ventas":
+                    # Punto 7 y 8: Unidades en Promoción (2x1)
+                    req_ventas = ["es_promocion", "unidades_pagas", "unidades_bonificadas"]
+                    if not all(c in df.columns for c in req_ventas):
+                        raise KeyError(f"Missing required columns for 'ventas' logic: {[c for c in req_ventas if c not in df.columns]}")
+
                     # Solo aplicamos el ajuste de bonificadas = pagas en días de promoción
                     promo_mask = df["es_promocion"] == 1
                     diff_mask = df["unidades_pagas"] != df["unidades_bonificadas"]
@@ -185,10 +195,12 @@ class DataPreprocessor:
                     # Punto 8: Recalcular totales para asegurar consistencia
                     df["unidades_totales"] = df["unidades_pagas"] + df["unidades_bonificadas"]
 
-            if table_name == "inventario":
-                # Punto 9, 10 y 11: Balance de Inventario y Ventas Reales
-                cols_inv_needed = ["ventas_reales_pagas", "ventas_reales_bonificadas", "buñuelos_preparados"]
-                if all(c in df.columns for c in cols_inv_needed):
+                if table_name == "inventario":
+                    # Punto 9, 10 y 11: Balance de Inventario y Ventas Reales
+                    cols_inv_needed = ["ventas_reales_pagas", "ventas_reales_bonificadas", "buñuelos_preparados", "unidades_agotadas"]
+                    if not all(c in df.columns for c in cols_inv_needed):
+                        raise KeyError(f"Missing required columns for 'inventario' logic: {[c for c in cols_inv_needed if c not in df.columns]}")
+                    
                     # Flag de promo por fecha (Abr-May / Sep-Oct, >= 2022) según Regla de Oro
                     m = df["fecha"].dt.month
                     y = df["fecha"].dt.year
@@ -209,15 +221,15 @@ class DataPreprocessor:
 
                     # Punto 12: Recalcular demanda_teorica_total (Verdad Absoluta)
                     # La demanda real es lo que se vendió más lo que faltó por vender (agotados)
-                    if "unidades_agotadas" in df.columns:
-                        # Identificar inconsistencias antes de corregir (para el reporte)
-                        expected_demand = df["ventas_reales_totales"] + df["unidades_agotadas"]
+                    # Identificar inconsistencias antes de corregir (para el reporte)
+                    expected_demand = df["ventas_reales_totales"] + df["unidades_agotadas"]
+                    
+                    if "demanda_teorica_total" in df.columns:
                         inconsistencies_mask = df["demanda_teorica_total"] != expected_demand
-                        
                         audit_log["correccion_demanda_inconsistente"] = int(inconsistencies_mask.sum())
-                        
-                        # Aplicar el recálculo a toda la serie para asegurar uniformidad
-                        df["demanda_teorica_total"] = expected_demand
+                    
+                    # Aplicar el recálculo a toda la serie para asegurar uniformidad
+                    df["demanda_teorica_total"] = expected_demand
 
             # 5. Llenado de huecos / Continuidad Temporal (Punto 5)
             # Determinar rango completo
@@ -300,7 +312,12 @@ class DataPreprocessor:
                                                df["fb_cost"] / df["inversion_total"], 
                                                0)
 
-        # VERIFICACIÓN FINAL DE CALIDAD
-        audit_log["valores_nulos_finales"] = int(df.isnull().sum().sum())
+            # VERIFICACIÓN FINAL DE CALIDAD
+            audit_log["valores_nulos_finales"] = int(df.isnull().sum().sum())
+
+        except Exception as e:
+            self.logger.error(f"Error limpiando tabla {table_name}: {str(e)}")
+            audit_log["status"] = "error"
+            audit_log["error"] = str(e)
 
         return df, audit_log

@@ -1,65 +1,102 @@
 {
     "phase": "integration_tests",
-    "timestamp": "2026-02-26T17:00:10.288877",
+    "timestamp": "2026-02-27T11:49:05.862612",
     "description": "Reporte de ejecución de pruebas de integración",
     "components": [
+        "eda_flow",
         "extraction_flow",
+        "full_pipeline",
         "preprocessing_flow"
     ],
     "metrics": {
-        "passed": 7,
+        "passed": 12,
         "failed": 0,
         "skipped": 0,
-        "total": 7
+        "total": 12
     },
     "details": [
+        {
+            "test_name": "test_full_eda_flow",
+            "component": "eda_flow",
+            "status": "passed",
+            "duration": 4.4347,
+            "error_message": null
+        },
+        {
+            "test_name": "test_figures_generation",
+            "component": "eda_flow",
+            "status": "passed",
+            "duration": 0.0002,
+            "error_message": null
+        },
+        {
+            "test_name": "test_business_logic_consistency",
+            "component": "eda_flow",
+            "status": "passed",
+            "duration": 0.0007,
+            "error_message": null
+        },
         {
             "test_name": "test_full_extraction_flow_real",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 2.1562,
+            "duration": 3.4618,
             "error_message": null
         },
         {
             "test_name": "test_audit_report_content",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 0.0203,
+            "duration": 0.0221,
             "error_message": null
         },
         {
             "test_name": "test_incremental_logic_simulation",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 0.0266,
+            "duration": 0.0378,
             "error_message": null
         },
         {
             "test_name": "test_connection_failure_handling",
             "component": "extraction_flow",
             "status": "passed",
-            "duration": 0.0658,
+            "duration": 0.0238,
+            "error_message": null
+        },
+        {
+            "test_name": "test_pipeline_train_mode_execution",
+            "component": "full_pipeline",
+            "status": "passed",
+            "duration": 10.5041,
+            "error_message": null
+        },
+        {
+            "test_name": "test_pipeline_load_mode_execution",
+            "component": "full_pipeline",
+            "status": "passed",
+            "duration": 5.3046,
             "error_message": null
         },
         {
             "test_name": "test_full_preprocessing_flow",
             "component": "preprocessing_flow",
             "status": "passed",
-            "duration": 0.2166,
+            "duration": 0.2398,
             "error_message": null
         },
         {
             "test_name": "test_preprocessing_report_persistence",
             "component": "preprocessing_flow",
             "status": "passed",
-            "duration": 0.0157,
+            "duration": 0.0139,
             "error_message": null
         },
         {
             "test_name": "test_master_data_consistency",
             "component": "preprocessing_flow",
             "status": "passed",
-            "duration": 0.0063,
+            "duration": 0.0062,
             "error_message": null
         }
     ]

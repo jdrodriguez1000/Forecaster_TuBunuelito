@@ -1,6 +1,6 @@
 {
     "phase": "01_extractions",
-    "timestamp": "2026-02-27T08:41:24.841629",
+    "timestamp": "2026-02-27T11:49:17.107297",
     "description": "Reporte consolidado de extracción incremental y auditoría de datos",
     "metrics": {
         "total_tables_processed": 6,

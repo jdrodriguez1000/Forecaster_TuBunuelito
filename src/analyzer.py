@@ -187,8 +187,14 @@ class DataAnalyzer:
         macro_vars = ['smlv', 'trm', 'inflacion_mensual_ipc', 'tasa_desempleo']
         res["07_macro_impact"] = {}
         for var in [v for v in macro_vars if v in df.columns]:
-            df[f'{var}_bin'] = pd.qcut(df[var], 4, labels=['Q1', 'Q2', 'Q3', 'Q4'], duplicates='drop')
-            res["07_macro_impact"][var] = df.groupby(f'{var}_bin', observed=True)[self.target].agg(['mean', 'median', 'count']).to_dict()
+            if df[var].nunique() > 1:
+                try:
+                    df[f'{var}_bin'] = pd.qcut(df[var], 4, labels=['Q1', 'Q2', 'Q3', 'Q4'], duplicates='drop')
+                    res["07_macro_impact"][var] = df.groupby(f'{var}_bin', observed=True)[self.target].agg(['mean', 'median', 'count']).to_dict()
+                except ValueError as e:
+                    self.logger.warning(f"No se pudo realizar qcut para {var}: {str(e)}")
+            else:
+                self.logger.info(f"Omitiendo binning para {var} por ser columna constante.")
 
         # H8: Periodos Refinados
         df['periodo'] = 'Post-Pandemia'

@@ -193,5 +193,66 @@ extractions:
         self.assertEqual(audit["index_name"], "fecha")
         self.assertEqual(audit["null_values_count"], 0)
 
+    # --- FLUJOS NO POSITIVOS (Abogado del Diablo) ---
+
+    def test_clean_table_unknown_name(self):
+        """Verifica que el preprocesador maneje tablas desconocidas devolviendo el DF original."""
+        df = pd.DataFrame({"col1": [1, 2]})
+        df_clean, audit = self.preprocessor._clean_table(df, "tabla_fantasma")
+        pd.testing.assert_frame_equal(df, df_clean)
+        self.assertEqual(audit["status"], "success")
+        self.assertIn("warning", audit)
+
+    def test_clean_table_missing_columns(self):
+        """Verifica que el recalculo de demanda no explote si faltan columnas críticas."""
+        # Si falta 'unidades_agotadas', el cálculo fallará
+        data = {"fecha": ["2023-01-01"], "ventas_reales_pagas": [100]}
+        df = pd.DataFrame(data)
+        # Debería capturar el error y poner status='error' en el reporte
+        df_clean, audit = self.preprocessor._clean_table(df, "inventario")
+        self.assertEqual(audit["status"], "error")
+        self.assertIn("error", audit)
+
+    def test_sentinel_values_conversion(self):
+        """Prueba que los valores centinela (-999, 'NULL') se conviertan a NaN."""
+        data = {
+            "fecha": ["2023-01-01", "2023-01-02", "2023-01-03"],
+            "unidades_pagas": [10, -999, 12],
+            "es_promocion": [0, "NULL", 1]
+        }
+        df = pd.DataFrame(data)
+        # Usamos 'ventas' porque no tiene ffill/bfill automático en estas columnas
+        df_clean, audit = self.preprocessor._clean_table(df, "ventas")
+        
+        self.assertTrue(pd.isna(df_clean.loc[1, "unidades_pagas"]))
+        self.assertTrue(pd.isna(df_clean.loc[1, "es_promocion"]))
+
+    def test_merge_master_missing_files(self):
+        """Verifica que el merge maestro falle o reporte error si faltan archivos físicos."""
+        reports = {"ventas": {"status": "success"}}
+        # Eliminamos el archivo ventas.parquet si existe
+        ventas_path = os.path.join(self.test_dir, "cleansed/ventas.parquet")
+        if os.path.exists(ventas_path):
+            os.remove(ventas_path)
+            
+        with self.assertRaises(Exception):
+            self.preprocessor._merge_master(reports)
+
+    def test_invalid_date_format_in_input(self):
+        """Verifica manejo de fechas corruptas."""
+        data = {"fecha": ["fecha_invalida", "2023-01-01"], "unidades_pagas": [10, 20]}
+        df = pd.DataFrame(data)
+        df_clean, audit = self.preprocessor._clean_table(df, "ventas")
+        # El preprocessor ahora captura el error en el audit
+        self.assertEqual(audit["status"], "error")
+        self.assertIn("error", audit)
+
+    def test_empty_input(self):
+        """Verifica que no explote con un DF vacío."""
+        df = pd.DataFrame()
+        df_clean, audit = self.preprocessor._clean_table(df, "ventas")
+        self.assertEqual(audit["status"], "error") # Porque faltan columnas obligatorias de ventas logic
+
+
 if __name__ == '__main__':
     unittest.main()
