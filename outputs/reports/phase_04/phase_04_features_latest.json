@@ -1,6 +1,6 @@
 {
     "phase": "04_feature_engineering",
-    "timestamp": "2026-02-27T15:27:36.273223",
+    "timestamp": "2026-02-27T15:49:44.341527",
     "description": "Enriquecimiento, Validación y Auditoría Estadística del dataset final.",
     "business_rule_compliance": {
         "rule_T_minus_1_vs_T": "Cumplida. Lags, momentum y ratios auditados para prevenir fuga de datos.",
@@ -161,7 +161,7 @@
         }
     },
     "performance": {
-        "execution_time_seconds": 1.549996,
+        "execution_time_seconds": 0.303781,
         "status": "success"
     }
 }

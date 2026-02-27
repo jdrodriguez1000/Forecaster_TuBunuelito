@@ -31,6 +31,32 @@ Fiel a la metodología de "Búsqueda de la Señal Pura", esta fase no fue lineal
 
 ---
 
+## 🧬 Los 5 Pilares de Diagnóstico (Mandatarios de Feature Creation)
+
+Antes de consolidar el set final, se ejecutaron 5 análisis profundos que dictaron la arquitectura de las variables:
+
+1. **Análisis de Interacciones Cruciales (Efectos Combinados)**: 
+    *   **Hallazgo**: Se validó que el impacto de una promoción no es el mismo un lunes que un domingo, ni la lluvia afecta igual si el cliente tiene liquidez (quincena).
+    *   **Acción**: Se crearon las columnas `interaction_...` para capturar estos efectos no lineales que los modelos lineales (Ridge) suelen ignorar.
+
+2. **Análisis de Retardos (Lead/Lag Analysis)**:
+    *   **Hallazgo**: La economía (TRM) no impacta el bolsillo del consumidor inmediatamente. Se identificó una correlación pico en el **Lag 30**.
+    *   **Acción**: Se fijó el rezago de la TRM en 30 días y se creó el `ipc_momentum` (90 días) para capturar tendencias inflacionarias acumuladas.
+
+3. **Detección y Caracterización de Anomalías (Outliers)**:
+    *   **Hallazgo**: Se separaron los picos explicados (promos/festivos) de las anomalías estructurales (ruido).
+    *   **Acción**: Esto justificó el uso de modelos robustos (Random Forest/LGBM) y la decisión de **NO imputar** días de demanda cero si no están explicados, manteniendo la serie "honesta".
+
+4. **Análisis de Estabilidad de la Varianza (Heterocedasticidad)**:
+    *   **Hallazgo**: Se analizó si la volatilidad Post-Pandemia era superior a la Pre-Pandemia. Se determinó que aunque hay mayor volumen, el coeficiente de variación se mantiene estable.
+    *   **Acción**: Se decidió no aplicar transformaciones logarítmicas globales para preservar la interpretabilidad directa en unidades, pero se optimizaron los ratios para "aplanar" la escala.
+
+5. **Análisis de Frecuencias (Espectrograma)**:
+    *   **Hallazgo**: El periodograma confirmó el ciclo fuerte de **7 días**, pero detectó "frecuencias fantasma" en los días **15 y 28**.
+    *   **Acción**: Esto validó la inclusión obligatoria de `es_quincena` y la variable de control mensual, descartando los términos de Fourier que inyectaban ruido en frecuencias no deseadas.
+
+---
+
 ## 1. 🔍 Auditoría de Columnas (Estado Final)
 
 ### **A. Variables que CONTINÚAN (Señales Puras)**

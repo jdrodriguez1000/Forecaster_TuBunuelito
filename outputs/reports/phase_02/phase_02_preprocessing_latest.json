@@ -1,6 +1,6 @@
 {
     "phase": "02_preprocessing",
-    "timestamp": "2026-02-27T15:40:50.848528",
+    "timestamp": "2026-02-27T15:49:48.580375",
     "description": "Limpieza de integridad, deduplicación y reindexación diaria",
     "table_reports": {
         "ventas": {

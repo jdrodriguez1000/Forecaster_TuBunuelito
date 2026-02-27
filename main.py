@@ -4,6 +4,7 @@ from src.utils.config_loader import load_config
 from src.loader import DataLoader
 from src.preprocessor import DataPreprocessor
 from src.analyzer import DataAnalyzer
+from src.features import FeatureEngineer
 
 # Configuración de logging para producción
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -51,9 +52,21 @@ def main():
             analyzer = DataAnalyzer()
             analyzer.run()
             logger.info("Fase 03 completada exitosamente.")
-            
-            # Aquí se llamarán: Features -> Modeling
-            logger.warning("Fases posteriores a 'EDA' aún no implementadas.")
+            # FASE 04: Feature Engineering
+            logger.info("Fase 04: Iniciando Enriquecimiento de Variables y Auditoría de Características...")
+            import pandas as pd
+            import os
+            master_path = os.path.join(config["general"]["data_cleansed_path"], "master_data.parquet")
+            if os.path.exists(master_path):
+                df_master = pd.read_parquet(master_path)
+                fe = FeatureEngineer()
+                fe.run_pipeline(df_master)
+                logger.info("Fase 04 completada exitosamente.")
+            else:
+                logger.error(f"No se encontró master_data en {master_path} para la Fase 04.")
+                
+            # Aquí se llamará: Modeling
+            logger.warning("Fase de Modelado aún no implementada.")
             
         elif mode == "forecast":
             logger.info("Iniciando Pipeline de Inferencia (Forecast)...")

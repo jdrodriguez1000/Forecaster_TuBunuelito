@@ -35,11 +35,13 @@ class TestFullPipelineIntegration:
         assert "Fase 01 completada exitosamente" in combined_output
         assert "Fase 02 completada exitosamente" in combined_output
         assert "Fase 03 completada exitosamente" in combined_output
+        assert "Fase 04 completada exitosamente" in combined_output
 
         # 4. Validar existencia física de reportes (punteros 'latest')
         assert os.path.exists(os.path.join(self.reports_path, "phase_01", "phase_01_extractions_latest.json"))
         assert os.path.exists(os.path.join(self.reports_path, "phase_02", "phase_02_preprocessing_latest.json"))
         assert os.path.exists(os.path.join(self.reports_path, "phase_03", "phase_03_eda_latest.json"))
+        assert os.path.exists(os.path.join(self.reports_path, "phase_04", "phase_04_features_latest.json"))
 
     def test_pipeline_load_mode_execution(self):
         """
@@ -54,6 +56,7 @@ class TestFullPipelineIntegration:
         combined_output = result.stdout + result.stderr
         assert result.returncode == 0
         assert "Fase 01 completada exitosamente" in combined_output
-        # En modo load, NO debería correr Preprocesamiento ni EDA
+        # En modo load, NO debería correr Preprocesamiento, EDA ni Features
         assert "Fase 02 completada exitosamente" not in combined_output
         assert "Fase 03 completada exitosamente" not in combined_output
+        assert "Fase 04 completada exitosamente" not in combined_output
