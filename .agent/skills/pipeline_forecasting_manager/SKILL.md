@@ -10,15 +10,15 @@ Esta habilidad dirige el ciclo de vida de un proyecto de forecasting, desde la e
 ## 🔄 Metodología de Ejecución (Production-First)
 En cada fase técnica, el agente debe seguir obligatoriamente este flujo secuencial:
 
-1.  **[CONFIG]**: Parametrización en `config.yaml`. Definición de rutas, hiperparámetros y reglas de negocio.
-2.  **[CORE]**: Desarrollo de la lógica en archivos `.py` modulares dentro de `src/`.
-3.  **[UNIT-TEST]**: Implementación y aprobación de pruebas unitarias en `tests/unit/`.
-4.  **[ORCHESTRATE]**: Integración y desarrollo del flujo en el orquestador principal (ej. `main.py`).
-5.  **[PROD-OUT]**: Ejecución en terminal para generar reportes y artefactos oficiales en `outputs/`.
-6.  **[INTEGRATION-TEST]**: Validación de flujo completo y contratos E2E en `tests/integration/`.
-7.  **[GEN-SCRIPT] (Opcional)**: Creación del script generador de notebooks en `scripts/`.
-8.  **[LAB-WORKFLOW] (Opcional)**: Creación del workflow para generar el notebook de experimentación automatizado.
-9.  **[CLOSE]**: Commit a GitHub y aprobación formal de la fase por parte del usuario.
+1.  **[BLUEPRINT]**: Planificación técnica en `.blueprint/blueprint_phase_XX.md` detallando la lógica y métricas esperadas.
+2.  **[CONFIG]**: Parametrización en `config.yaml`. Definición de rutas, hiperparámetros y reglas de negocio.
+3.  **[CORE]**: Desarrollo de la lógica en archivos `.py` modulares dentro de `src/`.
+4.  **[UNIT-TEST]**: Implementación y aprobación de pruebas unitarias en `tests/unit/`.
+5.  **[ORCHESTRATE]**: Integración y desarrollo del flujo en el orquestador principal (ej. `main.py`).
+6.  **[PROD-OUT]**: Ejecución en terminal para generar reportes y artefactos oficiales en `outputs/`.
+7.  **[INTEGRATION-TEST]**: Validación de flujo completo y contratos E2E en `tests/integration/`.
+8.  **[EXECUTIVE]**: Creación del `executive_report_phase_XX.md` en `.docs/` con el estándar de Puntos de Poder y Verdades Críticas.
+9.  **[CLOSE]**: Auditoría gerencial, aprobación oficial del usuario y commit final.
 
 ## 🔬 Fases del Pipeline de Forecasting
 

@@ -64,9 +64,28 @@ Se adopta un enfoque lineal "Lab-to-Prod", pero garantizando que los Core Module
 5.  **Generación Oficial ([PROD-OUT]):** Toda orden de producción genera material inmutable en `outputs/`.
 6.  **Automatización de Laboratorio ([GEN-SCRIPT]):** Se crean scripts `scripts/gen_XX.py` que importan de `src/` y arman notebooks transitorios.
 7.  **Despliegue Experimental ([LAB-WORKFLOW]):** En la carpeta `notebooks/` se ejecutan y validan datos mediante exploración interactiva.
-8.  **Cierre y Sincronización ([CLOSE]):** Git Commit, documentación y formalidad de cierre del hito.
+8.  **Cierre y Auditoría ([CLOSE]):** Generación del Informe Ejecutivo en `.docs/`, Git Commit y formalidad de cierre del hito.
 
-## 6. 📂 Segregación de Salidas (Ambientes Lab vs. Prod)
+## 6. 📄 Documentación Obligatoria por Fase (Blueprint & Executive Report)
+Para garantizar la trazabilidad estratégica y técnica, cada fase del proyecto debe generar dos artefactos documentales mandatorios:
+
+### 6.1. Blueprint de Fase (El Mapa Técnico)
+*   **Ubicación:** `.blueprint/blueprint_phase_XX.md`
+*   **Momento:** Se crea **antes** de iniciar el desarrollo técnico de la fase.
+*   **Contenido:** Objetivos técnicos, arquitectura de datos, lógica de transformación planeada, métricas a monitorear y justificación de las variables/modelos a utilizar.
+
+### 6.2. Informe Ejecutivo de Impacto (La Verdad Estratégica)
+*   **Ubicación:** `.docs/executive_report_phase_XX.md`
+*   **Momento:** Se crea **después** de completar la ejecución oficial y las pruebas de la fase.
+*   **Estatus:** Debe ser aprobado por el usuario antes de avanzar a la siguiente fase.
+*   **Estructura Obligatoria:** El informe debe dividirse en "Puntos de Poder" (Positivos) y "Verdades Críticas" (Riesgos/Advertencias), siguiendo estrictamente este formato para cada punto:
+    *   **Nombre:** Título corto y descriptivo del hallazgo.
+    *   **Frase:** Sentencia profesional y crítica que resume el impacto (estilo "píldora de verdad").
+    *   **Justificación:** Párrafo pedagógico y gerencial explicando el "porqué" y la implicación de negocio.
+    *   **Evidencia:** El dato numérico o estadístico exacto que respalda el punto.
+    *   **Fuente:** Ubicación exacta del dato (ej: `outputs/reports/phase_03/phase_03_eda_latest.json` -> campo X).
+
+## 7. 📂 Segregación de Salidas (Ambientes Lab vs. Prod)
 Queda estrictamente prohibido mezclar salidas "experimentales" transitorias con salidas "Producción":
 *   **Entorno Lab (Notebooks y Jupyter):** 
     *   Los reportes JSON nacidos de notebook van a `experiments/phase_0X_name/artifacts/`.
@@ -80,10 +99,10 @@ Queda estrictamente prohibido mezclar salidas "experimentales" transitorias con 
     *   Los reportes JSON de ejecución de pruebas van a `tests/reports/`.
 *   **Aislamiento de Pruebas:** Los entornos de Test no pueden tocar artefactos reales. Todo framework de simulación y test local corre bajo un flag de Mocking o `save=False` aislando los datos.
 
-## 7. 📤 Protocolo de Entregables y Trazabilidad
+## 9. 📤 Protocolo de Entregables y Trazabilidad
 *   **Protocolo de Dual Persistencia (Trazabilidad Total):** Todo artefacto generado en producción o calidad (JSON de reportes, figuras PNG/HTML, modelos PKL/JOBLIB, pronósticos CSV y **reportes de pruebas**) debe seguir obligatoriamente este patrón:
     *   **Versión Histórica Inmutable:** Se guarda en una subcarpeta llamada `history/` con el formato `nombre_YYYYMMDD_HHMMSS.extension`.
     *   **Versión Puntero (Latest):** Se guarda en la raíz de su carpeta correspondiente (`reports/`, `figures/`, `models/`, `forecast/`, `tests/reports/`) como `nombre_latest.extension`.
     *   **Contenido de Reportes:** Los archivos JSON deben incluir siempre los campos `phase`, `timestamp`, `description` y las `metrics` de auditoría correspondientes (o resultados de pruebas).
 *   **Gestión de Entornos:** Prohibida la instalación desorganizada de paquetes. Todo control reside en usar un solo `.venv` referenciado por `requirements.txt`.
-*   **Gatekeeper:** El avance hacia una nueva fase queda denegado hasta que el usuario humano audite, lea los reportes JSON e introduzca su aprobación explícitamente en el chat.
+*   **Gatekeeper:** El avance hacia una nueva fase queda denegado hasta que el usuario humano audite los reportes JSON, lea el **Informe Ejecutivo** correspondiente e introduzca su aprobación explícitamente en el chat.

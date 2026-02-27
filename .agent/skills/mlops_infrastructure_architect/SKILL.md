@@ -14,19 +14,21 @@ Garantiza la inmutabilidad y el orden del flujo de datos a través de capas lóg
 *   **`data/02_cleansed/`**: Datos tras limpieza inicial, estandarización de esquemas (snake_case), tipos de datos y manejo de nulos/duplicados.
 *   **`data/03_features/`**: Datasets enriquecidos con ingeniería de variables (estacionalidades, calendarios, exógenas y proyecciones de horizonte).
 *   **`data/04_processed/`**: Dataset final listo para el entrenamiento del modelo (frecuencia alineada y variables filtradas).
+*   **`.blueprint/`**: Planificación técnica obligatoria antes de iniciar cada fase.
+*   **`.docs/`**: Informes ejecutivos estratégicos generados al cierre de cada fase.
 
 ## 🏗️ 2. Metodología de Trabajo Industrializada (Production-First)
 El pilar fundamental: la lógica de producción es la base y los notebooks son extensiones para validación visual.
 
-1.  **Configuración ([CONFIG]):** Todo cambio nace en `config.yaml`. Prohibido el uso de valores "hardcoded".
-2.  **Core Técnico ([CORE]):** Desarrollo de lógica modular, clases y funciones en `src/`.
-3.  **Pruebas Unitarias ([UNIT-TEST]):** Validación de componentes atómicos en `tests/unit/`.
-4.  **Orquestación ([ORCHESTRATE]):** Integración en el flujo principal (ej. `main.py`).
-5.  **Salidas Oficiales ([PROD-OUT]):** Generación de reportes JSON y artefactos en `outputs/`.
-6.  **Pruebas de Integración ([INTEGRATION-TEST]):** Validación de flujos E2E en `tests/integration/`.
-7.  **Automatización Lab ([GEN-SCRIPT]) (Opcional):** Creación de scripts generadores de notebooks en `scripts/`.
-8.  **Workflow Lab ([LAB-WORKFLOW]) (Opcional):** Automatización de la regeneración de notebooks de validación.
-9.  **Cierre ([CLOSE]):** Documentación, auditoría de resultados y commit final.
+1.  **Planificación ([BLUEPRINT]):** Creación del `blueprint_phase_XX.md` con los objetivos técnicos.
+2.  **Configuración ([CONFIG]):** Todo cambio nace en `config.yaml`.
+3.  **Core Técnico ([CORE]):** Desarrollo de lógica modular, clases y funciones en `src/`.
+4.  **Pruebas Unitarias ([UNIT-TEST]):** Validación de componentes atómicos en `tests/unit/`.
+5.  **Orquestación ([ORCHESTRATE]):** Integración en el flujo principal (ej. `main.py`).
+6.  **Salidas Oficiales ([PROD-OUT]):** Generación de reportes JSON y artefactos en `outputs/`.
+7.  **Pruebas de Integración ([INTEGRATION-TEST]):** Validación de flujos E2E.
+8.  **Informe Ejecutivo ([EXECUTIVE]):** Generación del informe de impacto en `.docs/` siguiendo el estándar (Frase, Justificación, Evidencia, Fuente).
+9.  **Cierre ([CLOSE]):** Auditoría de resultados, aprobación del usuario y commit final.
 
 ## 💻 3. Arquitectura de Código (`src/`)
 Diseño orientado a objetos y modularidad:
