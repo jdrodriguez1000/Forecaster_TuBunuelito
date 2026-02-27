@@ -3,6 +3,7 @@ import logging
 from src.utils.config_loader import load_config
 from src.loader import DataLoader
 from src.preprocessor import DataPreprocessor
+from src.analyzer import DataAnalyzer
 
 # Configuración de logging para producción
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -45,8 +46,14 @@ def main():
             preprocessor.run()
             logger.info("Fase 02 completada exitosamente.")
             
-            # Aquí se llamarán: EDA -> Features -> Modeling
-            logger.warning("Fases posteriores a 'Preprocessing' aún no implementadas.")
+            # FASE 03: EDA (Análisis Exploratorio de Datos)
+            logger.info("Fase 03: Iniciando Análisis de Estacionariedad, ACF/PACF y Validación de Hipótesis...")
+            analyzer = DataAnalyzer()
+            analyzer.run()
+            logger.info("Fase 03 completada exitosamente.")
+            
+            # Aquí se llamarán: Features -> Modeling
+            logger.warning("Fases posteriores a 'EDA' aún no implementadas.")
             
         elif mode == "forecast":
             logger.info("Iniciando Pipeline de Inferencia (Forecast)...")

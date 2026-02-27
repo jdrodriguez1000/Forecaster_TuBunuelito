@@ -1,19 +1,1997 @@
 {
     "phase": "01_extractions",
-    "timestamp": "2026-02-26T17:00:09.971623",
+    "timestamp": "2026-02-27T08:41:24.841629",
     "description": "Reporte consolidado de extracción incremental y auditoría de datos",
     "metrics": {
-        "total_tables_processed": 1,
-        "successful_extractions": 0,
-        "failed_extractions": 1,
+        "total_tables_processed": 6,
+        "successful_extractions": 6,
+        "failed_extractions": 0,
         "total_rows_extracted": 0,
-        "incremental_updates": 1,
+        "incremental_updates": 6,
         "full_extractions": 0
     },
     "table_audits": {
         "ventas": {
-            "status": "error",
-            "error_message": "Conexión rechazada"
+            "status": "success",
+            "audit_details": {
+                "table_name": "ventas",
+                "shape": {
+                    "rows": 3344,
+                    "columns": 6
+                },
+                "contract_validation": {
+                    "is_contract_valid": true,
+                    "missing_columns": [],
+                    "extra_columns": [],
+                    "type_mismatches": {},
+                    "duplicated_columns": []
+                },
+                "integrity_checks": {
+                    "duplicated_rows_count": 0,
+                    "duplicated_dates_count": 0,
+                    "date_gaps_count": 0,
+                    "date_gaps_sample": []
+                },
+                "quality_metrics": {
+                    "null_counts": {
+                        "fecha": 0,
+                        "unidades_totales": 0,
+                        "unidades_pagas": 0,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    },
+                    "sentinel_counts": {},
+                    "zero_variance_cols": [],
+                    "high_cardinality_cols": []
+                },
+                "statistical_profile": {
+                    "numeric": {
+                        "unidades_totales": {
+                            "mean": 236.24192583732057,
+                            "std": 80.87575785607069,
+                            "min": 61.0,
+                            "max": 584.0,
+                            "p25": 175.0,
+                            "p50": 225.5,
+                            "p75": 283.25,
+                            "range": 523.0,
+                            "iqr_stats": {
+                                "iqr": 108.25,
+                                "lower_bound": 12.625,
+                                "upper_bound": 445.625,
+                                "outliers_below": 0,
+                                "outliers_above": 48,
+                                "total_outliers": 48
+                            }
+                        },
+                        "unidades_pagas": {
+                            "mean": 212.28977272727272,
+                            "std": 70.41514053256687,
+                            "min": 61.0,
+                            "max": 584.0,
+                            "p25": 160.75,
+                            "p50": 203.0,
+                            "p75": 248.0,
+                            "range": 523.0,
+                            "iqr_stats": {
+                                "iqr": 87.25,
+                                "lower_bound": 29.875,
+                                "upper_bound": 378.875,
+                                "outliers_below": 0,
+                                "outliers_above": 81,
+                                "total_outliers": 81
+                            }
+                        },
+                        "unidades_bonificadas": {
+                            "mean": 23.952153110047846,
+                            "std": 59.3937774772789,
+                            "min": 0.0,
+                            "max": 281.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 281.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 488,
+                                "total_outliers": 488
+                            }
+                        },
+                        "es_promocion": {
+                            "mean": 0.145933014354067,
+                            "std": 0.3530918471534545,
+                            "min": 0.0,
+                            "max": 1.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 1.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 488,
+                                "total_outliers": 488
+                            }
+                        },
+                        "ads_activos": {
+                            "mean": 0.17942583732057416,
+                            "std": 0.3837658767564217,
+                            "min": 0.0,
+                            "max": 1.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 1.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 600,
+                                "total_outliers": 600
+                            }
+                        }
+                    },
+                    "categorical": {}
+                },
+                "business_rules_validation": {
+                    "violations_count": 1,
+                    "details": [
+                        "Punto 15: 254 filas donde pagas != bonificadas en promoción."
+                    ]
+                },
+                "preview": {
+                    "first_3_rows": [
+                        {
+                            "fecha": "2017-01-01 00:00:00",
+                            "unidades_totales": 324,
+                            "unidades_pagas": 324,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        },
+                        {
+                            "fecha": "2017-01-02 00:00:00",
+                            "unidades_totales": 201,
+                            "unidades_pagas": 201,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        },
+                        {
+                            "fecha": "2017-01-03 00:00:00",
+                            "unidades_totales": 214,
+                            "unidades_pagas": 214,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        }
+                    ],
+                    "last_3_rows": [
+                        {
+                            "fecha": "2026-02-24 00:00:00",
+                            "unidades_totales": 169,
+                            "unidades_pagas": 169,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        },
+                        {
+                            "fecha": "2026-02-25 00:00:00",
+                            "unidades_totales": 158,
+                            "unidades_pagas": 158,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        },
+                        {
+                            "fecha": "2026-02-26 00:00:00",
+                            "unidades_totales": 189,
+                            "unidades_pagas": 189,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        }
+                    ],
+                    "sample_3_rows": [
+                        {
+                            "fecha": "2019-11-20 00:00:00",
+                            "unidades_totales": 160,
+                            "unidades_pagas": 160,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        },
+                        {
+                            "fecha": "2023-02-19 00:00:00",
+                            "unidades_totales": 257,
+                            "unidades_pagas": 257,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        },
+                        {
+                            "fecha": "2020-07-22 00:00:00",
+                            "unidades_totales": 133,
+                            "unidades_pagas": 133,
+                            "unidades_bonificadas": 0,
+                            "es_promocion": 0,
+                            "ads_activos": 0
+                        }
+                    ]
+                }
+            },
+            "preview": {
+                "first_3_rows": [
+                    {
+                        "fecha": "2017-01-01 00:00:00",
+                        "unidades_totales": 324,
+                        "unidades_pagas": 324,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    },
+                    {
+                        "fecha": "2017-01-02 00:00:00",
+                        "unidades_totales": 201,
+                        "unidades_pagas": 201,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    },
+                    {
+                        "fecha": "2017-01-03 00:00:00",
+                        "unidades_totales": 214,
+                        "unidades_pagas": 214,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    }
+                ],
+                "last_3_rows": [
+                    {
+                        "fecha": "2026-02-24 00:00:00",
+                        "unidades_totales": 169,
+                        "unidades_pagas": 169,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    },
+                    {
+                        "fecha": "2026-02-25 00:00:00",
+                        "unidades_totales": 158,
+                        "unidades_pagas": 158,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    },
+                    {
+                        "fecha": "2026-02-26 00:00:00",
+                        "unidades_totales": 189,
+                        "unidades_pagas": 189,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    }
+                ],
+                "sample_3_rows": [
+                    {
+                        "fecha": "2019-11-20 00:00:00",
+                        "unidades_totales": 160,
+                        "unidades_pagas": 160,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    },
+                    {
+                        "fecha": "2023-02-19 00:00:00",
+                        "unidades_totales": 257,
+                        "unidades_pagas": 257,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    },
+                    {
+                        "fecha": "2020-07-22 00:00:00",
+                        "unidades_totales": 133,
+                        "unidades_pagas": 133,
+                        "unidades_bonificadas": 0,
+                        "es_promocion": 0,
+                        "ads_activos": 0
+                    }
+                ]
+            }
+        },
+        "inventario": {
+            "status": "success",
+            "audit_details": {
+                "table_name": "inventario",
+                "shape": {
+                    "rows": 3344,
+                    "columns": 12
+                },
+                "contract_validation": {
+                    "is_contract_valid": true,
+                    "missing_columns": [],
+                    "extra_columns": [],
+                    "type_mismatches": {},
+                    "duplicated_columns": []
+                },
+                "integrity_checks": {
+                    "duplicated_rows_count": 0,
+                    "duplicated_dates_count": 0,
+                    "date_gaps_count": 0,
+                    "date_gaps_sample": []
+                },
+                "quality_metrics": {
+                    "null_counts": {
+                        "fecha": 0,
+                        "kit_inicial_bodega": 0,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 0,
+                        "buñuelos_preparados": 0,
+                        "ventas_reales_totales": 0,
+                        "ventas_reales_pagas": 0,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 0,
+                        "unidades_agotadas": 0,
+                        "kit_final_bodega": 0
+                    },
+                    "sentinel_counts": {},
+                    "zero_variance_cols": [],
+                    "high_cardinality_cols": []
+                },
+                "statistical_profile": {
+                    "numeric": {
+                        "kit_inicial_bodega": {
+                            "mean": 24425.171949760766,
+                            "std": 14511.884498936666,
+                            "min": 43.0,
+                            "max": 53774.0,
+                            "p25": 11911.5,
+                            "p50": 22516.0,
+                            "p75": 37082.5,
+                            "range": 53731.0,
+                            "iqr_stats": {
+                                "iqr": 25171.0,
+                                "lower_bound": -25845.0,
+                                "upper_bound": 74839.0,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        },
+                        "kit_recibido": {
+                            "mean": 248.95334928229664,
+                            "std": 983.3760818291428,
+                            "min": 0.0,
+                            "max": 6900.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 6900.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 219,
+                                "total_outliers": 219
+                            }
+                        },
+                        "lbs_recibidas": {
+                            "mean": 4.979066985645933,
+                            "std": 19.66752163658286,
+                            "min": 0.0,
+                            "max": 138.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 138.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 219,
+                                "total_outliers": 219
+                            }
+                        },
+                        "demanda_teorica_total": {
+                            "mean": 236.24192583732057,
+                            "std": 80.87575785607069,
+                            "min": 61.0,
+                            "max": 584.0,
+                            "p25": 175.0,
+                            "p50": 225.5,
+                            "p75": 283.25,
+                            "range": 523.0,
+                            "iqr_stats": {
+                                "iqr": 108.25,
+                                "lower_bound": 12.625,
+                                "upper_bound": 445.625,
+                                "outliers_below": 0,
+                                "outliers_above": 48,
+                                "total_outliers": 48
+                            }
+                        },
+                        "buñuelos_preparados": {
+                            "mean": 235.58163875598086,
+                            "std": 81.80174868626163,
+                            "min": 43.0,
+                            "max": 595.0,
+                            "p25": 174.0,
+                            "p50": 224.0,
+                            "p75": 283.0,
+                            "range": 552.0,
+                            "iqr_stats": {
+                                "iqr": 109.0,
+                                "lower_bound": 10.5,
+                                "upper_bound": 446.5,
+                                "outliers_below": 0,
+                                "outliers_above": 49,
+                                "total_outliers": 49
+                            }
+                        },
+                        "ventas_reales_totales": {
+                            "mean": 231.10735645933013,
+                            "std": 79.61333504301264,
+                            "min": 43.0,
+                            "max": 584.0,
+                            "p25": 171.0,
+                            "p50": 220.0,
+                            "p75": 277.0,
+                            "range": 541.0,
+                            "iqr_stats": {
+                                "iqr": 106.0,
+                                "lower_bound": 12.0,
+                                "upper_bound": 436.0,
+                                "outliers_below": 0,
+                                "outliers_above": 48,
+                                "total_outliers": 48
+                            }
+                        },
+                        "ventas_reales_pagas": {
+                            "mean": 207.6187200956938,
+                            "std": 69.33773480709392,
+                            "min": 43.0,
+                            "max": 584.0,
+                            "p25": 157.0,
+                            "p50": 198.5,
+                            "p75": 244.0,
+                            "range": 541.0,
+                            "iqr_stats": {
+                                "iqr": 87.0,
+                                "lower_bound": 26.5,
+                                "upper_bound": 374.5,
+                                "outliers_below": 0,
+                                "outliers_above": 78,
+                                "total_outliers": 78
+                            }
+                        },
+                        "ventas_reales_bonificadas": {
+                            "mean": 23.488636363636363,
+                            "std": 58.25752181303232,
+                            "min": 0.0,
+                            "max": 281.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 281.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 488,
+                                "total_outliers": 488
+                            }
+                        },
+                        "buñuelos_desperdiciados": {
+                            "mean": 4.474282296650718,
+                            "std": 6.463264847199669,
+                            "min": 0.0,
+                            "max": 39.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 8.0,
+                            "range": 39.0,
+                            "iqr_stats": {
+                                "iqr": 8.0,
+                                "lower_bound": -12.0,
+                                "upper_bound": 20.0,
+                                "outliers_below": 0,
+                                "outliers_above": 107,
+                                "total_outliers": 107
+                            }
+                        },
+                        "unidades_agotadas": {
+                            "mean": 5.134569377990431,
+                            "std": 7.9170740148867775,
+                            "min": 0.0,
+                            "max": 226.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 9.0,
+                            "range": 226.0,
+                            "iqr_stats": {
+                                "iqr": 9.0,
+                                "lower_bound": -13.5,
+                                "upper_bound": 22.5,
+                                "outliers_below": 0,
+                                "outliers_above": 89,
+                                "total_outliers": 89
+                            }
+                        },
+                        "kit_final_bodega": {
+                            "mean": 24189.590311004784,
+                            "std": 14478.145812304385,
+                            "min": 0.0,
+                            "max": 53337.0,
+                            "p25": 11657.0,
+                            "p50": 22259.0,
+                            "p75": 36796.75,
+                            "range": 53337.0,
+                            "iqr_stats": {
+                                "iqr": 25139.75,
+                                "lower_bound": -26052.625,
+                                "upper_bound": 74506.375,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        }
+                    },
+                    "categorical": {}
+                },
+                "business_rules_validation": {
+                    "violations_count": 1,
+                    "details": [
+                        "Punto 23: 1572 inconsistencias en cálculo de unidades agotadas."
+                    ]
+                },
+                "preview": {
+                    "first_3_rows": [
+                        {
+                            "fecha": "2017-01-01 00:00:00",
+                            "kit_inicial_bodega": 3000,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 324,
+                            "buñuelos_preparados": 317,
+                            "ventas_reales_totales": 317,
+                            "ventas_reales_pagas": 317,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 0,
+                            "unidades_agotadas": 7,
+                            "kit_final_bodega": 2683
+                        },
+                        {
+                            "fecha": "2017-01-02 00:00:00",
+                            "kit_inicial_bodega": 2683,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 201,
+                            "buñuelos_preparados": 215,
+                            "ventas_reales_totales": 201,
+                            "ventas_reales_pagas": 201,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 14,
+                            "unidades_agotadas": 0,
+                            "kit_final_bodega": 2468
+                        },
+                        {
+                            "fecha": "2017-01-03 00:00:00",
+                            "kit_inicial_bodega": 2468,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 214,
+                            "buñuelos_preparados": 221,
+                            "ventas_reales_totales": 214,
+                            "ventas_reales_pagas": 214,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 7,
+                            "unidades_agotadas": 0,
+                            "kit_final_bodega": 2247
+                        }
+                    ],
+                    "last_3_rows": [
+                        {
+                            "fecha": "2026-02-24 00:00:00",
+                            "kit_inicial_bodega": 48219,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 169,
+                            "buñuelos_preparados": 163,
+                            "ventas_reales_totales": 163,
+                            "ventas_reales_pagas": 163,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 0,
+                            "unidades_agotadas": 6,
+                            "kit_final_bodega": 48056
+                        },
+                        {
+                            "fecha": "2026-02-25 00:00:00",
+                            "kit_inicial_bodega": 48056,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 158,
+                            "buñuelos_preparados": 166,
+                            "ventas_reales_totales": 158,
+                            "ventas_reales_pagas": 158,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 8,
+                            "unidades_agotadas": 0,
+                            "kit_final_bodega": 47890
+                        },
+                        {
+                            "fecha": "2026-02-26 00:00:00",
+                            "kit_inicial_bodega": 48290,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 189,
+                            "buñuelos_preparados": 175,
+                            "ventas_reales_totales": 175,
+                            "ventas_reales_pagas": 175,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 0,
+                            "unidades_agotadas": 14,
+                            "kit_final_bodega": 48115
+                        }
+                    ],
+                    "sample_3_rows": [
+                        {
+                            "fecha": "2019-11-20 00:00:00",
+                            "kit_inicial_bodega": 14504,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 160,
+                            "buñuelos_preparados": 169,
+                            "ventas_reales_totales": 160,
+                            "ventas_reales_pagas": 160,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 9,
+                            "unidades_agotadas": 0,
+                            "kit_final_bodega": 14335
+                        },
+                        {
+                            "fecha": "2023-02-19 00:00:00",
+                            "kit_inicial_bodega": 32004,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 257,
+                            "buñuelos_preparados": 261,
+                            "ventas_reales_totales": 257,
+                            "ventas_reales_pagas": 257,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 4,
+                            "unidades_agotadas": 0,
+                            "kit_final_bodega": 31743
+                        },
+                        {
+                            "fecha": "2020-07-22 00:00:00",
+                            "kit_inicial_bodega": 18010,
+                            "kit_recibido": 0,
+                            "lbs_recibidas": 0,
+                            "demanda_teorica_total": 133,
+                            "buñuelos_preparados": 127,
+                            "ventas_reales_totales": 127,
+                            "ventas_reales_pagas": 127,
+                            "ventas_reales_bonificadas": 0,
+                            "buñuelos_desperdiciados": 0,
+                            "unidades_agotadas": 6,
+                            "kit_final_bodega": 17883
+                        }
+                    ]
+                }
+            },
+            "preview": {
+                "first_3_rows": [
+                    {
+                        "fecha": "2017-01-01 00:00:00",
+                        "kit_inicial_bodega": 3000,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 324,
+                        "buñuelos_preparados": 317,
+                        "ventas_reales_totales": 317,
+                        "ventas_reales_pagas": 317,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 0,
+                        "unidades_agotadas": 7,
+                        "kit_final_bodega": 2683
+                    },
+                    {
+                        "fecha": "2017-01-02 00:00:00",
+                        "kit_inicial_bodega": 2683,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 201,
+                        "buñuelos_preparados": 215,
+                        "ventas_reales_totales": 201,
+                        "ventas_reales_pagas": 201,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 14,
+                        "unidades_agotadas": 0,
+                        "kit_final_bodega": 2468
+                    },
+                    {
+                        "fecha": "2017-01-03 00:00:00",
+                        "kit_inicial_bodega": 2468,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 214,
+                        "buñuelos_preparados": 221,
+                        "ventas_reales_totales": 214,
+                        "ventas_reales_pagas": 214,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 7,
+                        "unidades_agotadas": 0,
+                        "kit_final_bodega": 2247
+                    }
+                ],
+                "last_3_rows": [
+                    {
+                        "fecha": "2026-02-24 00:00:00",
+                        "kit_inicial_bodega": 48219,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 169,
+                        "buñuelos_preparados": 163,
+                        "ventas_reales_totales": 163,
+                        "ventas_reales_pagas": 163,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 0,
+                        "unidades_agotadas": 6,
+                        "kit_final_bodega": 48056
+                    },
+                    {
+                        "fecha": "2026-02-25 00:00:00",
+                        "kit_inicial_bodega": 48056,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 158,
+                        "buñuelos_preparados": 166,
+                        "ventas_reales_totales": 158,
+                        "ventas_reales_pagas": 158,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 8,
+                        "unidades_agotadas": 0,
+                        "kit_final_bodega": 47890
+                    },
+                    {
+                        "fecha": "2026-02-26 00:00:00",
+                        "kit_inicial_bodega": 48290,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 189,
+                        "buñuelos_preparados": 175,
+                        "ventas_reales_totales": 175,
+                        "ventas_reales_pagas": 175,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 0,
+                        "unidades_agotadas": 14,
+                        "kit_final_bodega": 48115
+                    }
+                ],
+                "sample_3_rows": [
+                    {
+                        "fecha": "2019-11-20 00:00:00",
+                        "kit_inicial_bodega": 14504,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 160,
+                        "buñuelos_preparados": 169,
+                        "ventas_reales_totales": 160,
+                        "ventas_reales_pagas": 160,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 9,
+                        "unidades_agotadas": 0,
+                        "kit_final_bodega": 14335
+                    },
+                    {
+                        "fecha": "2023-02-19 00:00:00",
+                        "kit_inicial_bodega": 32004,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 257,
+                        "buñuelos_preparados": 261,
+                        "ventas_reales_totales": 257,
+                        "ventas_reales_pagas": 257,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 4,
+                        "unidades_agotadas": 0,
+                        "kit_final_bodega": 31743
+                    },
+                    {
+                        "fecha": "2020-07-22 00:00:00",
+                        "kit_inicial_bodega": 18010,
+                        "kit_recibido": 0,
+                        "lbs_recibidas": 0,
+                        "demanda_teorica_total": 133,
+                        "buñuelos_preparados": 127,
+                        "ventas_reales_totales": 127,
+                        "ventas_reales_pagas": 127,
+                        "ventas_reales_bonificadas": 0,
+                        "buñuelos_desperdiciados": 0,
+                        "unidades_agotadas": 6,
+                        "kit_final_bodega": 17883
+                    }
+                ]
+            }
+        },
+        "finanzas": {
+            "status": "success",
+            "audit_details": {
+                "table_name": "finanzas",
+                "shape": {
+                    "rows": 3344,
+                    "columns": 5
+                },
+                "contract_validation": {
+                    "is_contract_valid": true,
+                    "missing_columns": [],
+                    "extra_columns": [],
+                    "type_mismatches": {},
+                    "duplicated_columns": []
+                },
+                "integrity_checks": {
+                    "duplicated_rows_count": 0,
+                    "duplicated_dates_count": 0,
+                    "date_gaps_count": 0,
+                    "date_gaps_sample": []
+                },
+                "quality_metrics": {
+                    "null_counts": {
+                        "fecha": 0,
+                        "precio_unitario": 0,
+                        "costo_unitario": 0,
+                        "margen_bruto": 0,
+                        "porcentaje_margen": 0
+                    },
+                    "sentinel_counts": {},
+                    "zero_variance_cols": [],
+                    "high_cardinality_cols": []
+                },
+                "statistical_profile": {
+                    "numeric": {
+                        "precio_unitario": {
+                            "mean": 806.7314593301436,
+                            "std": 175.64238309587668,
+                            "min": 580.0,
+                            "max": 1170.0,
+                            "p25": 660.0,
+                            "p50": 760.0,
+                            "p75": 940.0,
+                            "range": 590.0,
+                            "iqr_stats": {
+                                "iqr": 280.0,
+                                "lower_bound": 240.0,
+                                "upper_bound": 1360.0,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        },
+                        "costo_unitario": {
+                            "mean": 480.60125000000005,
+                            "std": 111.19930345992093,
+                            "min": 205.14,
+                            "max": 702.0,
+                            "p25": 396.0,
+                            "p50": 456.0,
+                            "p75": 564.0,
+                            "range": 496.86,
+                            "iqr_stats": {
+                                "iqr": 168.0,
+                                "lower_bound": 144.0,
+                                "upper_bound": 816.0,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        },
+                        "margen_bruto": {
+                            "mean": 326.13020933014354,
+                            "std": 68.08769130046063,
+                            "min": 232.0,
+                            "max": 468.0,
+                            "p25": 272.0,
+                            "p50": 304.0,
+                            "p75": 376.0,
+                            "range": 236.0,
+                            "iqr_stats": {
+                                "iqr": 104.0,
+                                "lower_bound": 116.0,
+                                "upper_bound": 532.0,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        },
+                        "porcentaje_margen": {
+                            "mean": 40.5926764354067,
+                            "std": 3.101525805637305,
+                            "min": 40.0,
+                            "max": 64.63,
+                            "p25": 40.0,
+                            "p50": 40.0,
+                            "p75": 40.0,
+                            "range": 24.629999999999995,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 40.0,
+                                "upper_bound": 40.0,
+                                "outliers_below": 0,
+                                "outliers_above": 154,
+                                "total_outliers": 154
+                            }
+                        }
+                    },
+                    "categorical": {}
+                },
+                "business_rules_validation": {
+                    "violations_count": 0,
+                    "details": []
+                },
+                "preview": {
+                    "first_3_rows": [
+                        {
+                            "fecha": "2017-01-01 00:00:00",
+                            "precio_unitario": 580,
+                            "costo_unitario": 214.05,
+                            "margen_bruto": 365.95,
+                            "porcentaje_margen": 63.09
+                        },
+                        {
+                            "fecha": "2017-01-02 00:00:00",
+                            "precio_unitario": 580,
+                            "costo_unitario": 210.98,
+                            "margen_bruto": 369.02,
+                            "porcentaje_margen": 63.62
+                        },
+                        {
+                            "fecha": "2017-01-03 00:00:00",
+                            "precio_unitario": 580,
+                            "costo_unitario": 205.14,
+                            "margen_bruto": 374.86,
+                            "porcentaje_margen": 64.63
+                        }
+                    ],
+                    "last_3_rows": [
+                        {
+                            "fecha": "2026-02-24 00:00:00",
+                            "precio_unitario": 1170,
+                            "costo_unitario": 702.0,
+                            "margen_bruto": 468.0,
+                            "porcentaje_margen": 40.0
+                        },
+                        {
+                            "fecha": "2026-02-25 00:00:00",
+                            "precio_unitario": 1170,
+                            "costo_unitario": 702.0,
+                            "margen_bruto": 468.0,
+                            "porcentaje_margen": 40.0
+                        },
+                        {
+                            "fecha": "2026-02-26 00:00:00",
+                            "precio_unitario": 1170,
+                            "costo_unitario": 702.0,
+                            "margen_bruto": 468.0,
+                            "porcentaje_margen": 40.0
+                        }
+                    ],
+                    "sample_3_rows": [
+                        {
+                            "fecha": "2019-11-20 00:00:00",
+                            "precio_unitario": 680,
+                            "costo_unitario": 408.0,
+                            "margen_bruto": 272.0,
+                            "porcentaje_margen": 40.0
+                        },
+                        {
+                            "fecha": "2023-02-19 00:00:00",
+                            "precio_unitario": 910,
+                            "costo_unitario": 546.0,
+                            "margen_bruto": 364.0,
+                            "porcentaje_margen": 40.0
+                        },
+                        {
+                            "fecha": "2020-07-22 00:00:00",
+                            "precio_unitario": 720,
+                            "costo_unitario": 432.0,
+                            "margen_bruto": 288.0,
+                            "porcentaje_margen": 40.0
+                        }
+                    ]
+                }
+            },
+            "preview": {
+                "first_3_rows": [
+                    {
+                        "fecha": "2017-01-01 00:00:00",
+                        "precio_unitario": 580,
+                        "costo_unitario": 214.05,
+                        "margen_bruto": 365.95,
+                        "porcentaje_margen": 63.09
+                    },
+                    {
+                        "fecha": "2017-01-02 00:00:00",
+                        "precio_unitario": 580,
+                        "costo_unitario": 210.98,
+                        "margen_bruto": 369.02,
+                        "porcentaje_margen": 63.62
+                    },
+                    {
+                        "fecha": "2017-01-03 00:00:00",
+                        "precio_unitario": 580,
+                        "costo_unitario": 205.14,
+                        "margen_bruto": 374.86,
+                        "porcentaje_margen": 64.63
+                    }
+                ],
+                "last_3_rows": [
+                    {
+                        "fecha": "2026-02-24 00:00:00",
+                        "precio_unitario": 1170,
+                        "costo_unitario": 702.0,
+                        "margen_bruto": 468.0,
+                        "porcentaje_margen": 40.0
+                    },
+                    {
+                        "fecha": "2026-02-25 00:00:00",
+                        "precio_unitario": 1170,
+                        "costo_unitario": 702.0,
+                        "margen_bruto": 468.0,
+                        "porcentaje_margen": 40.0
+                    },
+                    {
+                        "fecha": "2026-02-26 00:00:00",
+                        "precio_unitario": 1170,
+                        "costo_unitario": 702.0,
+                        "margen_bruto": 468.0,
+                        "porcentaje_margen": 40.0
+                    }
+                ],
+                "sample_3_rows": [
+                    {
+                        "fecha": "2019-11-20 00:00:00",
+                        "precio_unitario": 680,
+                        "costo_unitario": 408.0,
+                        "margen_bruto": 272.0,
+                        "porcentaje_margen": 40.0
+                    },
+                    {
+                        "fecha": "2023-02-19 00:00:00",
+                        "precio_unitario": 910,
+                        "costo_unitario": 546.0,
+                        "margen_bruto": 364.0,
+                        "porcentaje_margen": 40.0
+                    },
+                    {
+                        "fecha": "2020-07-22 00:00:00",
+                        "precio_unitario": 720,
+                        "costo_unitario": 432.0,
+                        "margen_bruto": 288.0,
+                        "porcentaje_margen": 40.0
+                    }
+                ]
+            }
+        },
+        "marketing": {
+            "status": "success",
+            "audit_details": {
+                "table_name": "marketing",
+                "shape": {
+                    "rows": 3344,
+                    "columns": 7
+                },
+                "contract_validation": {
+                    "is_contract_valid": true,
+                    "missing_columns": [],
+                    "extra_columns": [],
+                    "type_mismatches": {},
+                    "duplicated_columns": []
+                },
+                "integrity_checks": {
+                    "duplicated_rows_count": 0,
+                    "duplicated_dates_count": 0,
+                    "date_gaps_count": 0,
+                    "date_gaps_sample": []
+                },
+                "quality_metrics": {
+                    "null_counts": {
+                        "fecha": 0,
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0,
+                        "fb_pct": 0,
+                        "campaña_activa": 0
+                    },
+                    "sentinel_counts": {},
+                    "zero_variance_cols": [],
+                    "high_cardinality_cols": []
+                },
+                "statistical_profile": {
+                    "numeric": {
+                        "inversion_total": {
+                            "mean": 3224.840311004785,
+                            "std": 6965.1270261350055,
+                            "min": 0.0,
+                            "max": 22038.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 22038.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 600,
+                                "total_outliers": 600
+                            }
+                        },
+                        "ig_cost": {
+                            "mean": 2177.290071770335,
+                            "std": 4704.841265072975,
+                            "min": 0.0,
+                            "max": 15248.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 15248.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 600,
+                                "total_outliers": 600
+                            }
+                        },
+                        "fb_cost": {
+                            "mean": 1047.5502392344497,
+                            "std": 2264.2932015378674,
+                            "min": 0.0,
+                            "max": 7686.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 7686.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 600,
+                                "total_outliers": 600
+                            }
+                        },
+                        "ig_pct": {
+                            "mean": 12.112831937799042,
+                            "std": 25.914678190205816,
+                            "min": 0.0,
+                            "max": 70.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 70.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 600,
+                                "total_outliers": 600
+                            }
+                        },
+                        "fb_pct": {
+                            "mean": 5.829751794258374,
+                            "std": 12.483709311478446,
+                            "min": 0.0,
+                            "max": 34.99,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 34.99,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 600,
+                                "total_outliers": 600
+                            }
+                        },
+                        "campaña_activa": {
+                            "mean": 0.17942583732057416,
+                            "std": 0.3837658767564217,
+                            "min": 0.0,
+                            "max": 1.0,
+                            "p25": 0.0,
+                            "p50": 0.0,
+                            "p75": 0.0,
+                            "range": 1.0,
+                            "iqr_stats": {
+                                "iqr": 0.0,
+                                "lower_bound": 0.0,
+                                "upper_bound": 0.0,
+                                "outliers_below": 0,
+                                "outliers_above": 600,
+                                "total_outliers": 600
+                            }
+                        }
+                    },
+                    "categorical": {}
+                },
+                "business_rules_validation": {
+                    "violations_count": 0,
+                    "details": []
+                },
+                "preview": {
+                    "first_3_rows": [
+                        {
+                            "fecha": "2017-01-01 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        },
+                        {
+                            "fecha": "2017-01-02 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        },
+                        {
+                            "fecha": "2017-01-03 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        }
+                    ],
+                    "last_3_rows": [
+                        {
+                            "fecha": "2026-02-24 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        },
+                        {
+                            "fecha": "2026-02-25 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        },
+                        {
+                            "fecha": "2026-02-26 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        }
+                    ],
+                    "sample_3_rows": [
+                        {
+                            "fecha": "2019-11-20 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        },
+                        {
+                            "fecha": "2023-02-19 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        },
+                        {
+                            "fecha": "2020-07-22 00:00:00",
+                            "inversion_total": 0,
+                            "ig_cost": 0,
+                            "fb_cost": 0,
+                            "ig_pct": 0.0,
+                            "fb_pct": 0.0,
+                            "campaña_activa": 0
+                        }
+                    ]
+                }
+            },
+            "preview": {
+                "first_3_rows": [
+                    {
+                        "fecha": "2017-01-01 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    },
+                    {
+                        "fecha": "2017-01-02 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    },
+                    {
+                        "fecha": "2017-01-03 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    }
+                ],
+                "last_3_rows": [
+                    {
+                        "fecha": "2026-02-24 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    },
+                    {
+                        "fecha": "2026-02-25 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    },
+                    {
+                        "fecha": "2026-02-26 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    }
+                ],
+                "sample_3_rows": [
+                    {
+                        "fecha": "2019-11-20 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    },
+                    {
+                        "fecha": "2023-02-19 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    },
+                    {
+                        "fecha": "2020-07-22 00:00:00",
+                        "inversion_total": 0,
+                        "ig_cost": 0,
+                        "fb_cost": 0,
+                        "ig_pct": 0.0,
+                        "fb_pct": 0.0,
+                        "campaña_activa": 0
+                    }
+                ]
+            }
+        },
+        "macroeconomia": {
+            "status": "success",
+            "audit_details": {
+                "table_name": "macroeconomia",
+                "shape": {
+                    "rows": 3344,
+                    "columns": 5
+                },
+                "contract_validation": {
+                    "is_contract_valid": true,
+                    "missing_columns": [],
+                    "extra_columns": [],
+                    "type_mismatches": {},
+                    "duplicated_columns": []
+                },
+                "integrity_checks": {
+                    "duplicated_rows_count": 0,
+                    "duplicated_dates_count": 0,
+                    "date_gaps_count": 0,
+                    "date_gaps_sample": []
+                },
+                "quality_metrics": {
+                    "null_counts": {
+                        "fecha": 0,
+                        "smlv": 0,
+                        "inflacion_mensual_ipc": 0,
+                        "tasa_desempleo": 0,
+                        "trm": 0
+                    },
+                    "sentinel_counts": {},
+                    "zero_variance_cols": [],
+                    "high_cardinality_cols": []
+                },
+                "statistical_profile": {
+                    "numeric": {
+                        "smlv": {
+                            "mean": 1010248.6133373206,
+                            "std": 234069.263918405,
+                            "min": 737717.0,
+                            "max": 1512300.0,
+                            "p25": 828116.0,
+                            "p50": 908526.0,
+                            "p75": 1160000.0,
+                            "range": 774583.0,
+                            "iqr_stats": {
+                                "iqr": 331884.0,
+                                "lower_bound": 330290.0,
+                                "upper_bound": 1657826.0,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        },
+                        "inflacion_mensual_ipc": {
+                            "mean": 0.46399757775119616,
+                            "std": 0.2752025765115037,
+                            "min": 0.1342,
+                            "max": 1.0933,
+                            "p25": 0.3167,
+                            "p50": 0.35,
+                            "p75": 0.4683,
+                            "range": 0.9591,
+                            "iqr_stats": {
+                                "iqr": 0.1516,
+                                "lower_bound": 0.08929999999999996,
+                                "upper_bound": 0.6957,
+                                "outliers_below": 0,
+                                "outliers_above": 730,
+                                "total_outliers": 730
+                            }
+                        },
+                        "tasa_desempleo": {
+                            "mean": 11.073672248803828,
+                            "std": 2.1312313962516454,
+                            "min": 8.9,
+                            "max": 16.4,
+                            "p25": 9.7,
+                            "p50": 10.2,
+                            "p75": 11.45,
+                            "range": 7.499999999999998,
+                            "iqr_stats": {
+                                "iqr": 1.75,
+                                "lower_bound": 7.074999999999999,
+                                "upper_bound": 14.075,
+                                "outliers_below": 0,
+                                "outliers_above": 455,
+                                "total_outliers": 455
+                            }
+                        },
+                        "trm": {
+                            "mean": 4179.284638157894,
+                            "std": 800.3908553304868,
+                            "min": 2818.1,
+                            "max": 5363.79,
+                            "p25": 3207.205,
+                            "p50": 4493.23,
+                            "p75": 4872.3575,
+                            "range": 2545.69,
+                            "iqr_stats": {
+                                "iqr": 1665.1525000000001,
+                                "lower_bound": 709.4762499999997,
+                                "upper_bound": 7370.08625,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        }
+                    },
+                    "categorical": {}
+                },
+                "business_rules_validation": {
+                    "violations_count": 0,
+                    "details": []
+                },
+                "preview": {
+                    "first_3_rows": [
+                        {
+                            "fecha": "2017-01-01 00:00:00",
+                            "smlv": 737717,
+                            "inflacion_mensual_ipc": 0.3408,
+                            "tasa_desempleo": 9.65,
+                            "trm": 3007.65
+                        },
+                        {
+                            "fecha": "2017-01-02 00:00:00",
+                            "smlv": 737717,
+                            "inflacion_mensual_ipc": 0.3408,
+                            "tasa_desempleo": 9.65,
+                            "trm": 3005.78
+                        },
+                        {
+                            "fecha": "2017-01-03 00:00:00",
+                            "smlv": 737717,
+                            "inflacion_mensual_ipc": 0.3408,
+                            "tasa_desempleo": 9.65,
+                            "trm": 3015.69
+                        }
+                    ],
+                    "last_3_rows": [
+                        {
+                            "fecha": "2026-02-24 00:00:00",
+                            "smlv": 1512300,
+                            "inflacion_mensual_ipc": 0.3167,
+                            "tasa_desempleo": 9.73,
+                            "trm": 4961.84
+                        },
+                        {
+                            "fecha": "2026-02-25 00:00:00",
+                            "smlv": 1512300,
+                            "inflacion_mensual_ipc": 0.3167,
+                            "tasa_desempleo": 9.73,
+                            "trm": 4946.35
+                        },
+                        {
+                            "fecha": "2026-02-26 00:00:00",
+                            "smlv": 1512300,
+                            "inflacion_mensual_ipc": 0.3167,
+                            "tasa_desempleo": 9.73,
+                            "trm": 4964.7
+                        }
+                    ],
+                    "sample_3_rows": [
+                        {
+                            "fecha": "2019-11-20 00:00:00",
+                            "smlv": 828116,
+                            "inflacion_mensual_ipc": 0.3167,
+                            "tasa_desempleo": 10.25,
+                            "trm": 3754.02
+                        },
+                        {
+                            "fecha": "2023-02-19 00:00:00",
+                            "smlv": 1160000,
+                            "inflacion_mensual_ipc": 0.7733,
+                            "tasa_desempleo": 10.63,
+                            "trm": 4745.56
+                        },
+                        {
+                            "fecha": "2020-07-22 00:00:00",
+                            "smlv": 877803,
+                            "inflacion_mensual_ipc": 0.1342,
+                            "tasa_desempleo": 15.65,
+                            "trm": 4014.34
+                        }
+                    ]
+                }
+            },
+            "preview": {
+                "first_3_rows": [
+                    {
+                        "fecha": "2017-01-01 00:00:00",
+                        "smlv": 737717,
+                        "inflacion_mensual_ipc": 0.3408,
+                        "tasa_desempleo": 9.65,
+                        "trm": 3007.65
+                    },
+                    {
+                        "fecha": "2017-01-02 00:00:00",
+                        "smlv": 737717,
+                        "inflacion_mensual_ipc": 0.3408,
+                        "tasa_desempleo": 9.65,
+                        "trm": 3005.78
+                    },
+                    {
+                        "fecha": "2017-01-03 00:00:00",
+                        "smlv": 737717,
+                        "inflacion_mensual_ipc": 0.3408,
+                        "tasa_desempleo": 9.65,
+                        "trm": 3015.69
+                    }
+                ],
+                "last_3_rows": [
+                    {
+                        "fecha": "2026-02-24 00:00:00",
+                        "smlv": 1512300,
+                        "inflacion_mensual_ipc": 0.3167,
+                        "tasa_desempleo": 9.73,
+                        "trm": 4961.84
+                    },
+                    {
+                        "fecha": "2026-02-25 00:00:00",
+                        "smlv": 1512300,
+                        "inflacion_mensual_ipc": 0.3167,
+                        "tasa_desempleo": 9.73,
+                        "trm": 4946.35
+                    },
+                    {
+                        "fecha": "2026-02-26 00:00:00",
+                        "smlv": 1512300,
+                        "inflacion_mensual_ipc": 0.3167,
+                        "tasa_desempleo": 9.73,
+                        "trm": 4964.7
+                    }
+                ],
+                "sample_3_rows": [
+                    {
+                        "fecha": "2019-11-20 00:00:00",
+                        "smlv": 828116,
+                        "inflacion_mensual_ipc": 0.3167,
+                        "tasa_desempleo": 10.25,
+                        "trm": 3754.02
+                    },
+                    {
+                        "fecha": "2023-02-19 00:00:00",
+                        "smlv": 1160000,
+                        "inflacion_mensual_ipc": 0.7733,
+                        "tasa_desempleo": 10.63,
+                        "trm": 4745.56
+                    },
+                    {
+                        "fecha": "2020-07-22 00:00:00",
+                        "smlv": 877803,
+                        "inflacion_mensual_ipc": 0.1342,
+                        "tasa_desempleo": 15.65,
+                        "trm": 4014.34
+                    }
+                ]
+            }
+        },
+        "clima": {
+            "status": "success",
+            "audit_details": {
+                "table_name": "clima",
+                "shape": {
+                    "rows": 3344,
+                    "columns": 7
+                },
+                "contract_validation": {
+                    "is_contract_valid": true,
+                    "missing_columns": [],
+                    "extra_columns": [],
+                    "type_mismatches": {},
+                    "duplicated_columns": []
+                },
+                "integrity_checks": {
+                    "duplicated_rows_count": 0,
+                    "duplicated_dates_count": 0,
+                    "date_gaps_count": 0,
+                    "date_gaps_sample": []
+                },
+                "quality_metrics": {
+                    "null_counts": {
+                        "fecha": 0,
+                        "temperatura_media": 0,
+                        "probabilidad_lluvia": 0,
+                        "precipitacion_mm": 0,
+                        "tipo_lluvia": 0,
+                        "evento_macro": 0,
+                        "es_dia_lluvioso": 0
+                    },
+                    "sentinel_counts": {},
+                    "zero_variance_cols": [],
+                    "high_cardinality_cols": []
+                },
+                "statistical_profile": {
+                    "numeric": {
+                        "temperatura_media": {
+                            "mean": 22.021022727272722,
+                            "std": 1.1573113061099822,
+                            "min": 19.1,
+                            "max": 26.0,
+                            "p25": 21.1,
+                            "p50": 22.0,
+                            "p75": 22.9,
+                            "range": 6.899999999999999,
+                            "iqr_stats": {
+                                "iqr": 1.7999999999999972,
+                                "lower_bound": 18.400000000000006,
+                                "upper_bound": 25.599999999999994,
+                                "outliers_below": 0,
+                                "outliers_above": 1,
+                                "total_outliers": 1
+                            }
+                        },
+                        "probabilidad_lluvia": {
+                            "mean": 0.5726674641148325,
+                            "std": 0.21351074921404278,
+                            "min": 0.1,
+                            "max": 0.95,
+                            "p25": 0.45,
+                            "p50": 0.55,
+                            "p75": 0.7,
+                            "range": 0.85,
+                            "iqr_stats": {
+                                "iqr": 0.24999999999999994,
+                                "lower_bound": 0.07500000000000012,
+                                "upper_bound": 1.0749999999999997,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        },
+                        "precipitacion_mm": {
+                            "mean": 11.805173444976077,
+                            "std": 14.698299226420291,
+                            "min": 0.0,
+                            "max": 136.1,
+                            "p25": 0.0,
+                            "p50": 7.1,
+                            "p75": 19.125,
+                            "range": 136.1,
+                            "iqr_stats": {
+                                "iqr": 19.125,
+                                "lower_bound": -28.6875,
+                                "upper_bound": 47.8125,
+                                "outliers_below": 0,
+                                "outliers_above": 92,
+                                "total_outliers": 92
+                            }
+                        },
+                        "es_dia_lluvioso": {
+                            "mean": 0.5861244019138756,
+                            "std": 0.492600397619217,
+                            "min": 0.0,
+                            "max": 1.0,
+                            "p25": 0.0,
+                            "p50": 1.0,
+                            "p75": 1.0,
+                            "range": 1.0,
+                            "iqr_stats": {
+                                "iqr": 1.0,
+                                "lower_bound": -1.5,
+                                "upper_bound": 2.5,
+                                "outliers_below": 0,
+                                "outliers_above": 0,
+                                "total_outliers": 0
+                            }
+                        }
+                    },
+                    "categorical": {
+                        "tipo_lluvia": {
+                            "top_values": {
+                                "Ninguna": 1384,
+                                "Moderada": 1231,
+                                "Fuerte": 577,
+                                "Ligera": 152
+                            },
+                            "unique_count": 4,
+                            "mode": "Ninguna",
+                            "top_weight": 0.4138755980861244
+                        },
+                        "evento_macro": {
+                            "top_values": {
+                                "Neutral": 1463,
+                                "La Niña": 1212,
+                                "El Niño": 669
+                            },
+                            "unique_count": 3,
+                            "mode": "Neutral",
+                            "top_weight": 0.4375
+                        }
+                    }
+                },
+                "business_rules_validation": {
+                    "violations_count": 0,
+                    "details": []
+                },
+                "preview": {
+                    "first_3_rows": [
+                        {
+                            "fecha": "2017-01-01 00:00:00",
+                            "temperatura_media": 21.0,
+                            "probabilidad_lluvia": 0.5,
+                            "precipitacion_mm": 0.0,
+                            "tipo_lluvia": "Ninguna",
+                            "evento_macro": "La Niña",
+                            "es_dia_lluvioso": 0
+                        },
+                        {
+                            "fecha": "2017-01-02 00:00:00",
+                            "temperatura_media": 20.7,
+                            "probabilidad_lluvia": 0.5,
+                            "precipitacion_mm": 0.0,
+                            "tipo_lluvia": "Ninguna",
+                            "evento_macro": "La Niña",
+                            "es_dia_lluvioso": 0
+                        },
+                        {
+                            "fecha": "2017-01-03 00:00:00",
+                            "temperatura_media": 20.7,
+                            "probabilidad_lluvia": 0.5,
+                            "precipitacion_mm": 13.8,
+                            "tipo_lluvia": "Moderada",
+                            "evento_macro": "La Niña",
+                            "es_dia_lluvioso": 1
+                        }
+                    ],
+                    "last_3_rows": [
+                        {
+                            "fecha": "2026-02-24 00:00:00",
+                            "temperatura_media": 22.6,
+                            "probabilidad_lluvia": 0.35,
+                            "precipitacion_mm": 0.0,
+                            "tipo_lluvia": "Ninguna",
+                            "evento_macro": "Neutral",
+                            "es_dia_lluvioso": 0
+                        },
+                        {
+                            "fecha": "2026-02-25 00:00:00",
+                            "temperatura_media": 22.1,
+                            "probabilidad_lluvia": 0.35,
+                            "precipitacion_mm": 40.2,
+                            "tipo_lluvia": "Fuerte",
+                            "evento_macro": "Neutral",
+                            "es_dia_lluvioso": 1
+                        },
+                        {
+                            "fecha": "2026-02-26 00:00:00",
+                            "temperatura_media": 23.1,
+                            "probabilidad_lluvia": 0.35,
+                            "precipitacion_mm": 0.0,
+                            "tipo_lluvia": "Ninguna",
+                            "evento_macro": "Neutral",
+                            "es_dia_lluvioso": 0
+                        }
+                    ],
+                    "sample_3_rows": [
+                        {
+                            "fecha": "2019-11-20 00:00:00",
+                            "temperatura_media": 22.0,
+                            "probabilidad_lluvia": 0.75,
+                            "precipitacion_mm": 136.1,
+                            "tipo_lluvia": "Fuerte",
+                            "evento_macro": "Neutral",
+                            "es_dia_lluvioso": 1
+                        },
+                        {
+                            "fecha": "2023-02-19 00:00:00",
+                            "temperatura_media": 20.6,
+                            "probabilidad_lluvia": 0.55,
+                            "precipitacion_mm": 11.4,
+                            "tipo_lluvia": "Moderada",
+                            "evento_macro": "La Niña",
+                            "es_dia_lluvioso": 1
+                        },
+                        {
+                            "fecha": "2020-07-22 00:00:00",
+                            "temperatura_media": 22.3,
+                            "probabilidad_lluvia": 0.4,
+                            "precipitacion_mm": 0.0,
+                            "tipo_lluvia": "Ninguna",
+                            "evento_macro": "Neutral",
+                            "es_dia_lluvioso": 0
+                        }
+                    ]
+                }
+            },
+            "preview": {
+                "first_3_rows": [
+                    {
+                        "fecha": "2017-01-01 00:00:00",
+                        "temperatura_media": 21.0,
+                        "probabilidad_lluvia": 0.5,
+                        "precipitacion_mm": 0.0,
+                        "tipo_lluvia": "Ninguna",
+                        "evento_macro": "La Niña",
+                        "es_dia_lluvioso": 0
+                    },
+                    {
+                        "fecha": "2017-01-02 00:00:00",
+                        "temperatura_media": 20.7,
+                        "probabilidad_lluvia": 0.5,
+                        "precipitacion_mm": 0.0,
+                        "tipo_lluvia": "Ninguna",
+                        "evento_macro": "La Niña",
+                        "es_dia_lluvioso": 0
+                    },
+                    {
+                        "fecha": "2017-01-03 00:00:00",
+                        "temperatura_media": 20.7,
+                        "probabilidad_lluvia": 0.5,
+                        "precipitacion_mm": 13.8,
+                        "tipo_lluvia": "Moderada",
+                        "evento_macro": "La Niña",
+                        "es_dia_lluvioso": 1
+                    }
+                ],
+                "last_3_rows": [
+                    {
+                        "fecha": "2026-02-24 00:00:00",
+                        "temperatura_media": 22.6,
+                        "probabilidad_lluvia": 0.35,
+                        "precipitacion_mm": 0.0,
+                        "tipo_lluvia": "Ninguna",
+                        "evento_macro": "Neutral",
+                        "es_dia_lluvioso": 0
+                    },
+                    {
+                        "fecha": "2026-02-25 00:00:00",
+                        "temperatura_media": 22.1,
+                        "probabilidad_lluvia": 0.35,
+                        "precipitacion_mm": 40.2,
+                        "tipo_lluvia": "Fuerte",
+                        "evento_macro": "Neutral",
+                        "es_dia_lluvioso": 1
+                    },
+                    {
+                        "fecha": "2026-02-26 00:00:00",
+                        "temperatura_media": 23.1,
+                        "probabilidad_lluvia": 0.35,
+                        "precipitacion_mm": 0.0,
+                        "tipo_lluvia": "Ninguna",
+                        "evento_macro": "Neutral",
+                        "es_dia_lluvioso": 0
+                    }
+                ],
+                "sample_3_rows": [
+                    {
+                        "fecha": "2019-11-20 00:00:00",
+                        "temperatura_media": 22.0,
+                        "probabilidad_lluvia": 0.75,
+                        "precipitacion_mm": 136.1,
+                        "tipo_lluvia": "Fuerte",
+                        "evento_macro": "Neutral",
+                        "es_dia_lluvioso": 1
+                    },
+                    {
+                        "fecha": "2023-02-19 00:00:00",
+                        "temperatura_media": 20.6,
+                        "probabilidad_lluvia": 0.55,
+                        "precipitacion_mm": 11.4,
+                        "tipo_lluvia": "Moderada",
+                        "evento_macro": "La Niña",
+                        "es_dia_lluvioso": 1
+                    },
+                    {
+                        "fecha": "2020-07-22 00:00:00",
+                        "temperatura_media": 22.3,
+                        "probabilidad_lluvia": 0.4,
+                        "precipitacion_mm": 0.0,
+                        "tipo_lluvia": "Ninguna",
+                        "evento_macro": "Neutral",
+                        "es_dia_lluvioso": 0
+                    }
+                ]
+            }
         }
     }
 }

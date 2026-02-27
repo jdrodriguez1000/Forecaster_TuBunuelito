@@ -66,45 +66,75 @@ extractions:
     datetime: ["1900-01-01", "1700-01-01", "9999-12-31", "2099-12-31"]
 
 preprocessing:
-  target_column: y
-  date_column: date
-  imputation_strategy: ffill
+  target_column: "demanda_teorica_total"
+  date_column: "fecha"
 
 eda:
-  visualizations:
-    - time_series_plot
-    - correlation_matrix
-    - seasonality_analysis
+  target_variable: "demanda_teorica_total"
+  splits:
+    test_days: 185
+    val_days: 185
+  time_series:
+    lags_acf_pacf: 40
+  statistics:
+    vif_threshold: 10
+    vif_columns:
+      - "smlv"
+      - "inflacion_mensual_ipc"
+      - "tasa_desempleo"
+      - "trm"
+      - "temperatura_media"
+      - "probabilidad_lluvia"
+      - "precipitacion_mm"
+      - "inversion_total"
+      - "ig_cost"
+      - "fb_cost"
+      - "precio_unitario"
+      - "costo_unitario"
+  business_rules:
+    pandemic:
+      start: "2020-05-01"
+      end: "2021-04-30"
+    promotions:
+      cycle_1_months: [4, 5]
+      cycle_2_months: [9, 10]
+      start_year: 2022
+    events:
+      novenas:
+        month: 12
+        days: [16, 26]
+      semana_santa:
+        jueves_viernes_santo: true # Lógica interna para festivos móviles
+      feria_flores:
+        month: 8
+        days: [1, 10]
+    payments:
+      quincenas: [15, 16, 30, 31]
+      prima_legal:
+        june: [15, 20]
+        december: [15, 20]
 
 features:
   lags: [1, 7, 14, 30]
   window_features: [7, 14, 30]
   exogenous_vars:
-    - is_holiday
-    - is_promotion
-    - rain_intensity
+    - "es_dia_lluvioso"
+    - "es_promocion"
+    - "campaña_activa"
+    - "smlv"
+    - "trm"
 
 modeling:
-  strategy: ForecasterDirect
-  horizon: 185
+  strategy: "ForecasterDirect"
+  random_state: 42
   models:
-    - Ridge
-    - RandomForestRegressor
-    - LGBMRegressor
-    - XGBRegressor
-  metrics:
-    - mape
-    - rmse
-
-forecast:
-  horizon: 185
-  confidence_interval: 0.95
-
-simulations:
-  scenarios:
-    - baseline
-    - optimistic
-    - pessimistic
+    - "Ridge"
+    - "RandomForestRegressor"
+    - "LGBMRegressor"
+    - "XGBRegressor"
+    - "GradientBoostingRegressor"
+    - "HistGradientBoostingRegressor"
+  test_size: 185
 
 monitoring:
   drift_threshold: 0.05

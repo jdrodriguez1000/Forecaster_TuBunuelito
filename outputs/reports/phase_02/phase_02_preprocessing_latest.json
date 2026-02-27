@@ -1,134 +1,134 @@
 {
     "phase": "02_preprocessing",
-    "timestamp": "2026-02-26T17:00:10.039741",
+    "timestamp": "2026-02-27T08:41:28.183811",
     "description": "Limpieza de integridad, deduplicación y reindexación diaria",
     "table_reports": {
         "ventas": {
             "status": "success",
             "initial_shape": [
-                3343,
+                3344,
                 6
             ],
             "final_shape": [
-                3343,
+                3344,
                 6
             ],
             "audit_log": {
-                "initial_rows": 3343,
+                "initial_rows": 3344,
                 "exact_duplicates_removed": 0,
                 "removed_columns": [],
                 "duplicate_dates_removed": 0,
                 "ajustes_bonificadas_promocion": 254,
                 "gaps_filled": 0,
-                "total_days_final": 3343,
+                "total_days_final": 3344,
                 "valores_nulos_finales": 0
             }
         },
         "inventario": {
             "status": "success",
             "initial_shape": [
-                3343,
+                3344,
                 12
             ],
             "final_shape": [
-                3343,
+                3344,
                 12
             ],
             "audit_log": {
-                "initial_rows": 3343,
+                "initial_rows": 3344,
                 "exact_duplicates_removed": 0,
                 "removed_columns": [],
                 "duplicate_dates_removed": 0,
                 "ajustes_ventas_bonificadas_promocion": 232,
                 "correccion_demanda_inconsistente": 232,
                 "gaps_filled": 0,
-                "total_days_final": 3343,
+                "total_days_final": 3344,
                 "valores_nulos_finales": 0
             }
         },
         "finanzas": {
             "status": "success",
             "initial_shape": [
-                3343,
+                3344,
                 5
             ],
             "final_shape": [
-                3343,
+                3344,
                 5
             ],
             "audit_log": {
-                "initial_rows": 3343,
+                "initial_rows": 3344,
                 "exact_duplicates_removed": 0,
                 "removed_columns": [],
                 "duplicate_dates_removed": 0,
                 "gaps_filled": 0,
-                "total_days_final": 3343,
+                "total_days_final": 3344,
                 "valores_nulos_finales": 0
             }
         },
         "marketing": {
             "status": "success",
             "initial_shape": [
-                3343,
+                3344,
                 7
             ],
             "final_shape": [
-                3343,
+                3344,
                 7
             ],
             "audit_log": {
-                "initial_rows": 3343,
+                "initial_rows": 3344,
                 "exact_duplicates_removed": 0,
                 "removed_columns": [],
                 "duplicate_dates_removed": 0,
                 "gaps_filled": 0,
-                "total_days_final": 3343,
+                "total_days_final": 3344,
                 "valores_nulos_finales": 0
             }
         },
         "macroeconomia": {
             "status": "success",
             "initial_shape": [
-                3343,
+                3344,
                 5
             ],
             "final_shape": [
-                3343,
+                3344,
                 5
             ],
             "audit_log": {
-                "initial_rows": 3343,
+                "initial_rows": 3344,
                 "exact_duplicates_removed": 0,
                 "removed_columns": [],
                 "duplicate_dates_removed": 0,
                 "gaps_filled": 0,
-                "total_days_final": 3343,
+                "total_days_final": 3344,
                 "valores_nulos_finales": 0
             }
         },
         "clima": {
             "status": "success",
             "initial_shape": [
-                3343,
+                3344,
                 7
             ],
             "final_shape": [
-                3343,
+                3344,
                 7
             ],
             "audit_log": {
-                "initial_rows": 3343,
+                "initial_rows": 3344,
                 "exact_duplicates_removed": 0,
                 "removed_columns": [],
                 "duplicate_dates_removed": 0,
                 "gaps_filled": 0,
-                "total_days_final": 3343,
+                "total_days_final": 3344,
                 "valores_nulos_finales": 0
             }
         }
     },
     "master_audit": {
-        "total_rows": 3343,
+        "total_rows": 3344,
         "total_columns": 36,
         "columns_info": {
             "unidades_totales": "int64",
@@ -174,7 +174,7 @@
         "index_name": "fecha",
         "date_range": {
             "start": "2017-01-01T00:00:00",
-            "end": "2026-02-25T00:00:00"
+            "end": "2026-02-26T00:00:00"
         }
     }
 }
